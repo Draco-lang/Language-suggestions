@@ -1,5 +1,7 @@
 # Ideas for .NET Language (temporary name: "Fresh")
 
+<a href="https://discord.gg/gHfhpPFzYu"><img alt="Discord" src="https://badgen.net/discord/members/gHfhpPFzYu?icon=discord&color=D70&labelColor=F80&label=Join+our+Discord!"></a>
+
 ## The aims of the language
 
 > I want to do to C# what Kotlin did to Java

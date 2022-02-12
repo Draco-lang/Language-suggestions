@@ -13,6 +13,7 @@ It should be a high-level language which could replace C#. Here are a few major 
 - It should be more or less readable by people not knowing it (as opposed to ML, for instance)
 - It should be debuggable
 - It prefers generalized approaches over sugared special cases
+- It adds a bigger and more worked out feature earlier, than an underspecified one that will result in extra features to work out the missed use cases
 
 ## Current state of the project
 

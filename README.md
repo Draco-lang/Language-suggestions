@@ -14,6 +14,10 @@ It should be a high-level language which could replace C#. Here are a few major 
 - It should be debuggable
 - It prefers generalized approaches over sugared special cases
 
+## Current state of the project
+
+Right now we are still working out the core of the language. We do this by collecting ideas, inspiration, frustrating things and useful bits from existing languages. Once we have a stable enough core, we can start to formally specify the language. Until then, we have a [prototype compiler project](https://github.com/LanguageDev/Fresh) that we develop to have the skeleton and infrastructure ready, when the time comes to implement the language.
+
 ## Propose your ideas!
 
 Now that you grasped the main idea, feel free to open an issue which

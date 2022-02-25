@@ -1,0 +1,69 @@
+// The grammar uses the regex-flavor qualifiers, meaning:
+//  - ?: optional
+//  - *: repeat 0 or more times
+//  - +: repeat 1 or more times
+//
+// Lowercase names are rule names, uppercase names are token types
+// When more readable, the string value is used instead of the token type
+
+module_declaration   : declaration* End
+                     ;
+
+declaration          : function_declaration
+                     ;
+
+function_declaration : 'func' Identifier '(' parameter_list ')' function_body
+                     | 'func' Identifier '(' parameter_list ')' type_specifier function_body
+                     ;
+
+parameter_list       : (parameter (',' parameter)* ','?)?
+                     ;
+
+parameter            : Identifier type_specifier
+                     ;
+
+function_body        : block_expression
+                     | value_specifier ';'
+                     ;
+
+type_specifier       : ':' type
+                     ;
+
+value_specifier      : '=' expression
+                     ;
+
+type                 : Identifier
+                     ;
+
+expression           : block_expression
+                     | if_expression
+                     | while_expression
+                     | PrefixUnaryOp expression
+                     | expression BinaryOp expression
+                     | expression '(' argument_list ')'
+                     | expression '[' argument_list ']'
+                     | '(' expression ')'
+                     | Identifier
+                     ;
+
+argument_list        : (expression (',' expression)* ','?)?
+                     ;
+
+block_expression     : '{' statement* expression? '}'
+                     ;
+
+if_expression        : 'if' expression 'then' expression ('else' expression)?
+                     ;
+
+while_expression     : 'while' expression 'do' expression
+                     ;
+
+statement            : if_expression     // If the last body is block
+                     | while_expression  // If the body is block
+                     | var_statement
+                     | expression ';'
+                     ;
+
+var_statement        : 'var' Identifier type_specifier? value_specifier? ';'
+                     | 'val' Identifier type_specifier? value_specifier ';'
+                     ;

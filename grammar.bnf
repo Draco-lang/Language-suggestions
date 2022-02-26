@@ -3,8 +3,13 @@
 //  - *: repeat 0 or more times
 //  - +: repeat 1 or more times
 //
-// Lowercase names are rule names, uppercase names are token types
-// When more readable, the string value is used instead of the token type
+// Lowercase names are rule names, uppercase names are token types.
+// When more readable, the string value is used instead of the token type.
+//
+// To make some constructs more compact, parameterized grammar rules are also used,
+// which are defined as:
+// foo(BAR): '(' BAR ')' ;
+// For example, foo(expr) would mean the sequence '(' expr ')'.
 
 module_declaration   : declaration* End
                      ;
@@ -12,11 +17,10 @@ module_declaration   : declaration* End
 declaration          : function_declaration
                      ;
 
-function_declaration : 'func' Identifier '(' parameter_list ')' function_body
-                     | 'func' Identifier '(' parameter_list ')' type_specifier function_body
+function_declaration : 'func' Identifier '(' parameter_list ')' type_specifier? function_body
                      ;
 
-parameter_list       : (parameter (',' parameter)* ','?)?
+parameter_list       : comma_sep(parameter)
                      ;
 
 parameter            : Identifier type_specifier
@@ -35,9 +39,9 @@ value_specifier      : '=' expression
 type                 : Identifier
                      ;
 
-expression           : block_expression
-                     | if_expression
-                     | while_expression
+expression           : block(expression)
+                     | if(expression)
+                     | while(expression)
                      | PrefixUnaryOp expression
                      | expression BinaryOp expression
                      | expression '(' argument_list ')'
@@ -46,24 +50,28 @@ expression           : block_expression
                      | Identifier
                      ;
 
-argument_list        : (expression (',' expression)* ','?)?
-                     ;
-
-block_expression     : '{' statement* expression? '}'
-                     ;
-
-if_expression        : 'if' expression 'then' expression ('else' expression)?
-                     ;
-
-while_expression     : 'while' expression 'do' expression
-                     ;
-
-statement            : if_expression     // If the last body is block
-                     | while_expression  // If the body is block
+statement            : block(statement)
+                     | if(statement)
+                     | while(statement)
                      | var_statement
                      | expression ';'
                      ;
 
+argument_list        : comma_sep(expression)
+                     ;
+
 var_statement        : 'var' Identifier type_specifier? value_specifier? ';'
                      | 'val' Identifier type_specifier? value_specifier ';'
+                     ;
+
+block(E)             : '{' statement* E? '}'
+                     ;
+
+if(E)                : 'if' expression 'then' E ('else' E)?
+                     ;
+
+while(E)             : 'while' expression 'do' E
+                     ;
+
+comma_sep(E)         : (E (',' E)* ','?)?
                      ;

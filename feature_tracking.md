@@ -28,6 +28,7 @@ Legend:
    * Not mentioned anywhere yet
  * 🟡 Operators
    * Basic, built-in operators proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)
+   * [Exponential operator](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/34)
    * User-defined operators not mentioned anywhere yet
  * 🔴 Exceptions, throwing, catching
    * Not mentioned anywhere yet
@@ -42,7 +43,7 @@ Legend:
  * 🔴 Discriminated unions
    * Not mentioned anywhere yet
  * 🟡 Traits
-   * No exact mentions anywhere yet
+   * [Internals](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/39)
    * Very much related and strong hints are in the [record types issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/41)
  * 🟡 Properties
    * Issue about possibilities, possible syntaxes [for properties](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/47)

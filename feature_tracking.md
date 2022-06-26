@@ -29,8 +29,10 @@ Legend:
      * Proposed in the [goto and implicit loop labels issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/45)
    * Break/continue in loops
      * Proposed in the [goto and implicit loop labels issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/45) as specialized labels
- * 🔴 Literal values
-   * Not mentioned anywhere yet
+ * 🟡 Literal values
+   * Proposal in the [literal values issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/50)
+   * String interpolation unspecified so far
+   * Verbatim strings not mentioned yet
  * 🟡 Operators
    * Basic, built-in operators proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)
    * [Exponential operator](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/34)
@@ -80,7 +82,7 @@ Legend:
    * [Case-exclusion issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/9)
  * 🟡 Lambda functions
    * Discussed in the [lambdas issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/49)
-   
+
 
 ## Metaprogramming
 

@@ -22,7 +22,7 @@ Legend:
    * While-loop
      * Proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)
    * For-loop
-     * Not mentioned anywhere yet
+     * Proposed in [proposal 0.2](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/40)
    * Match
      * Proposed in the [pattern matching issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/44)
    * Goto

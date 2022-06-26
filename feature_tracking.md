@@ -29,6 +29,8 @@ Legend:
      * Proposed in the [goto and implicit loop labels issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/45)
    * Break/continue in loops
      * Proposed in the [goto and implicit loop labels issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/45) as specialized labels
+   * Let ... in construct
+     * [Proposal](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/51)
  * 🟡 Literal values
    * Proposal in the [literal values issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/50)
    * String interpolation unspecified so far

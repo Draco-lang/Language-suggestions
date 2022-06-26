@@ -11,6 +11,7 @@ Legend:
 
  * 🟡 Variables
    * basic structure proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)
+   * [The val and var issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/12)
    * possibility of global variables not yet mentioned
  * 🟡 Functions/methods
    * free-functions proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)
@@ -24,14 +25,23 @@ Legend:
      * Not mentioned anywhere yet
    * Match
      * Proposed in the [pattern matching issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/44)
+   * Goto
+     * Proposed in the [goto and implicit loop labels issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/45)
+   * Break/continue in loops
+     * Proposed in the [goto and implicit loop labels issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/45) as specialized labels
  * 🔴 Literal values
    * Not mentioned anywhere yet
  * 🟡 Operators
    * Basic, built-in operators proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)
    * [Exponential operator](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/34)
+   * [Implies operator](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/36)
+   * [Inequality syntax](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/35)
+   * [Colon as tuple construction](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/22)
    * User-defined operators not mentioned anywhere yet
  * 🔴 Exceptions, throwing, catching
    * Not mentioned anywhere yet
+ * 🟡 Modules
+   * [Issue about declarations and definitions](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/30)
 
 ## Type-system
 
@@ -40,8 +50,8 @@ Legend:
    * There are quite a few left out, never mentioned (like interop primitives)
  * 🟡 Record types
    * Proposal about the [basics of record types](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/41)
- * 🔴 Discriminated unions
-   * Not mentioned anywhere yet
+ * 🟡 Discriminated unions
+   * [The DUs vs inheritance issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/5)
  * 🟡 Traits
    * [Internals](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/39)
    * Very much related and strong hints are in the [record types issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/41)
@@ -50,6 +60,9 @@ Legend:
  * 🟡 Type-inference
    * Overview is in the [proposal 0.2](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/40)
    * There is the [type inference issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/42)
+   * The initial [inference issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/10)
+ * 🟡 Overloading
+   * Overview is in the [proposal 0.2](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/40)
  * 🟡 Generics
    * For methods, mentioned in [proposal 0.2](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/40)
    * For types, nothing is mentioned yet
@@ -60,10 +73,14 @@ Legend:
 
  * 🔴 Asynchronous programming
    * Not mentioned anywhere yet
- * :red_circle: Generators
+ * 🔴 Generators
    * Not mentioned anywhere yet
  * 🟡 Pattern matching
    * Proposed in the [pattern matching issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/44)
+   * [Case-exclusion issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/9)
+ * 🟡 Lambda functions
+   * Discussed in the [lambdas issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/49)
+   
 
 ## Metaprogramming
 
@@ -76,3 +93,10 @@ Legend:
  * 🟡 Macro-system
    * Possibilities outlined in the [metaprogramming issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/16)
    * A slightly more detailed "wish-list" for capabilities in the [F# CEs expressed as higher-order macros issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/29)
+
+## Other
+
+ * 🟡 Documentation
+   * [Documentation comments issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/37)
+ * 🟡 Enforcing TCO
+   * [tailrec proposal](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/11)

@@ -57,6 +57,7 @@ Legend:
  * 🟡 Discriminated unions
    * [The DUs vs inheritance issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/5)
  * 🟡 Traits
+   * [Proposal](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/52)
    * [Internals](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/39)
    * Very much related and strong hints are in the [record types issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/41)
  * 🟡 Properties

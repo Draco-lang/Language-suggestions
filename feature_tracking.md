@@ -33,7 +33,7 @@ Legend:
      * [Proposal](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/51)
  * 🟡 Literal values
    * Proposal in the [literal values issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/50)
-   * String interpolation unspecified so far
+   * [String interpolation issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/53)
    * Verbatim strings not mentioned yet
  * 🟡 Operators
    * Basic, built-in operators proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)

@@ -42,8 +42,8 @@ Legend:
    * [Inequality syntax](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/35)
    * [Colon as tuple construction](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/22)
    * User-defined operators not mentioned anywhere yet
- * 🔴 Exceptions, throwing, catching
-   * Not mentioned anywhere yet
+ * 🟡 Exceptions, throwing, catching
+   * [Exceptions, try-catch-finally proposal](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/54)
  * 🟡 Modules
    * [Issue about declarations and definitions](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/30)
 

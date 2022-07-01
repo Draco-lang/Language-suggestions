@@ -1,4 +1,3 @@
-
 # Basic control-flow/declarations
 
 This RFC lays down the fundamental control-flow and declaration structures for the language. It describes both the the syntax and intended semantics in a semi-formal way. The goal is to have even just some bare-bones elements that we can agree on and build the other RFCs and proposals on.
@@ -43,15 +42,13 @@ func foo(): int = 0; // OK
 func foo() = 0; // OK, inferred to be int
 ```
 
-Overloading (defining multiple functions with the same name in the same scope) is allowed. Defining a local function inside another function is allowed and overloading is allowed in a function-local context too.
+Defining a local function inside another function is allowed.
 
 ```swift
 func main(): int {
-    // OK, overloads are different in signature
     func first(a: int, b: int) = a;
-    func first(a: int, b: int, c: int) = a;
 
-    return first(1, 2) + first(1, 2, 3); // OK, returns 2
+    return first(1, 2); // OK
 }
 ```
 

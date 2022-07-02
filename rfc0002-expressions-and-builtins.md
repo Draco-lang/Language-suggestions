@@ -52,7 +52,7 @@ They would have two forms, the normal decimal-separated form and a scientific fo
 ### Escape sequences
 
 They would be enclosed in single-quotes. Escaping would be the usual `\`. Escape sequences would be:
- * `\'`: Just a `"`. It does not have to be escaped in a string literal, but simplifies code-generation for the users. Since it's otherwise meaningless, it's essentially no effort to allow it in string literals. (inspired by C#)
+ * `\'`: Just a `'`. It does not have to be escaped in a string literal, but simplifies code-generation for the users. Since it's otherwise meaningless, it's essentially no effort to allow it in string literals. (inspired by C#)
  * `\"`: Just a `"`. It does not have to be escaped in a character literal, but simplifies code-generation for the users. Since it's otherwise meaningless, it's essentially no effort to allow it in character literals. (inspired by C#)
  * `\\`: Escapes the `\` to literally mean a `\`.
  * `\[0abfnrtv]`: Same as in every C-like programming language ([reference](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/strings/#string-escape-sequences))
@@ -90,4 +90,4 @@ The following is the precedence table for the supported operators (highest prece
 
 The biggest change compared to classic C languages is that the `not` operators precedence has moved down from the usual unary prefix operators (`+` and `-`). This is also the precedence Python uses and the rationale behind it is that this should result in less parenthesizing. For example, `not x < y` would usually not make sense as `(not x) < y`, as the comparing a boolean value with relational operators don't make sense. Grouping the logical operators like this at the bottom means, that they are all right below the relational operators, already at the level where we can expect boolean values.
 
-**Note**: If you find this odd at first, I really suggest trying it out and playing with it. Admittedly, it's a diverge from the usual C-way, but the change has made a lot of sense after trying it out for an extended amount of time. You can still comment your hate for this change afterwards, but don't skip it!
+**Note**: If you find this odd at first, I really suggest trying it out and playing with it. Admittedly, it's a divergence from the usual C-way, but the change has made a lot of sense after trying it out for an extended amount of time. You can still comment your hate for this change afterwards, but don't skip it!

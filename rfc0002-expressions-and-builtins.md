@@ -56,7 +56,10 @@ They would be enclosed in single-quotes. Escaping would be the usual `\`. Escape
  * `\"`: Just a `"`. It does not have to be escaped in a character literal, but simplifies code-generation for the users. Since it's otherwise meaningless, it's essentially no effort to allow it in character literals. (inspired by C#)
  * `\\`: Escapes the `\` to literally mean a `\`.
  * `\[0abfnrtv]`: Same as in every C-like programming language ([reference](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/strings/#string-escape-sequences))
- * TODO: How do we want Unicode escape sequences?
+ * Unicode escape sequences would take the form `\u{[hH]+}`, where the hex number between the braces denotes a Unicode codepoint. Examples:
+   * `\u{70} = p`
+   * `\u{AAAA} = ꪪ`
+   * `\u{1F47D} = 👽` <br/> The rationale behind this syntax is to give a single, variable-length construct compared to C# that is unambiguous (unlike `\x`) and simpler to read (because of explicit braces). How these are encoded will depend on the text (or character) it is embedded in.
 
 ### Character literals
 

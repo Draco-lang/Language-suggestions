@@ -2,6 +2,22 @@
 
 This RFC deals with expressions that are _not_ control-flow structures. Most notably, these will be literals, unary operators, binary operators, function calls, indexing, etc. The RFC does not specify user-defined operators, it only deals with the operator syntax, precedence and association. The built-in primitive types and their names will also be defined.
 
+## Notation
+
+The RFC will use a regex-flavored eBNF notation to avoid the confusion with pure regex, but to also avoid the [horrors of true, standard eBNF](https://dwheeler.com/essays/dont-use-iso-14977-ebnf.html).
+
+In short, the used syntax will be:
+ * `E1 | E2` [alternation]: either match the construct `E1` or `E2`
+ * `E1 E2` [concatenation]: first match the construct `E1`, then `E2`
+ * `E*` [0-repetition]: repeat the construct `E` 0 or more times
+ * `E+` [1-repetition]: repeat the construct `E` 1 or more times
+ * `E?` [optional]: the construct `E` is optionally matched
+ * `[A-Z12]` [character class]: same as the [RegEx construct](https://www.regular-expressions.info/charclass.html), match a character from `A` to `Z` (inclusive) or `1` or `2`.
+ * `'x'` [literal]: match the literal character `x`. Usual C-like escapes apply.
+ * `'xyz'` [literal sequence]: Same as `'x'` `'y'` `'z'` (the concatenation of the individual characters)
+
+**Note**: This RFC originally used regexes, but the significant whitespace made constructs harder to read. This is a slight improvement over regexes in the sense that for example `'a' 'b'` means the same as the regex `ab`.
+
 ## Built-in primitive types
 
 Originally defined in the [0.1 proposal](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33).
@@ -32,11 +48,9 @@ Originally defined in the [literal values issue](https://github.com/LanguageDev/
 
 ### Integer literals
 
-* Decimal integers would match the regex `[0-9]+`. Examples: `0`, `123`, `9625`
-* Hexadecimal integers would match the regex `0x[0-9a-fA-F]+`. Examples: `0x0`, `0xbadc0fee`, `0x2f5a`
-* Binary integers would match the regex `0b[01]+`. Examples: `0b0`, `0b011101`
-
-We could introduce a separator character for large constants to make them more readable. Some languages use `_` for this. The only rule would be that `_` can't be the first significant digit. Examples: `12_000_000_000`, `0xffff_0000`, `0b1100_0000_0101_1110`
+* Decimal integers would match `[0-9]+`. Examples: `0`, `123`, `9625`
+* Hexadecimal integers would match `'0x' [0-9a-fA-F]+`. Examples: `0x0`, `0xbadc0fee`, `0x2f5a`
+* Binary integers would match `'0b' [01]+`. Examples: `0b0`, `0b011101`
 
 ### Boolean literals
 
@@ -46,8 +60,8 @@ The keywords `true` and `false`.
 
 They would have two forms, the normal decimal-separated form and a scientific form.
 
- * Decimal separated form would match the regex `[0-9]+\.[0-9]+`. Examples: `0.0`, `0.123`, `25.0`, `62.73`. **Note that omitting either side completely is not enabled on purpose.**
- * Scientific notation form would match the regex `[0-9]+(\.[0-9]+)?[eE][+-]?[0-9]+`. Examples: `10E3`, `0.1e+4`, `123.345E-12`
+ * Decimal separated form would match `[0-9]+ '.' [0-9]+`. Examples: `0.0`, `0.123`, `25.0`, `62.73`. **Note that omitting either side completely is not enabled on purpose.**
+ * Scientific notation form would match `[0-9]+ ('.' [0-9]+)? [eE] [+-]? [0-9]+`. Examples: `10E3`, `0.1e+4`, `123.345E-12`
 
 ### Escape sequences
 
@@ -55,8 +69,8 @@ They would be enclosed in single-quotes. Escaping would be the usual `\`. Escape
  * `\'`: Just a `'`. It does not have to be escaped in a string literal, but simplifies code-generation for the users. Since it's otherwise meaningless, it's essentially no effort to allow it in string literals. (inspired by C#)
  * `\"`: Just a `"`. It does not have to be escaped in a character literal, but simplifies code-generation for the users. Since it's otherwise meaningless, it's essentially no effort to allow it in character literals. (inspired by C#)
  * `\\`: Escapes the `\` to literally mean a `\`.
- * `\[0abfnrtv]`: Same as in every C-like programming language ([reference](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/strings/#string-escape-sequences))
- * Unicode escape sequences would take the form `\u{[hH]+}`, where the hex number between the braces denotes a Unicode codepoint. Examples:
+ * `'\' [0abfnrtv]`: Same as in every C-like programming language ([reference](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/strings/#string-escape-sequences))
+ * Unicode escape sequences would take the form `'\u{' [0-9a-fA-F]+ '}'`, where the hex number between the braces denotes a Unicode codepoint. Examples:
    * `\u{70} = p`
    * `\u{AAAA} = ꪪ`
    * `\u{1F47D} = 👽` <br/> The rationale behind this syntax is to give a single, variable-length construct compared to C# that is unambiguous (unlike `\x`) and simpler to read (because of explicit braces). How these are encoded will depend on the text (or character) it is embedded in.

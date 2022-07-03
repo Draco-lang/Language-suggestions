@@ -26,7 +26,7 @@ The `: ReturnType` part is optional for both syntaxes.
 
 ### Semantics
 
-Omitting the return type for the block syntax means that the return type is `unit` (equivalent to `void` in C#). For the inline-expression syntax inferring the return type means that the return-type is inferred to be the type of the expression.
+Omitting the return type means that the return type is `unit` (equivalent to `void` in C#).
 
 ```swift
 func foo(): int {
@@ -39,7 +39,7 @@ func foo() {
 
 func foo(): int = 0; // OK
 
-func foo() = 0; // OK, inferred to be int
+func foo() = 0; // ERROR: integer returned, declared return type was unit
 ```
 
 Defining a local function inside another function is allowed.

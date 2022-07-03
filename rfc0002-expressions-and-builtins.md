@@ -23,8 +23,6 @@ In short, the used syntax will be:
 Originally defined in the [0.1 proposal](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33).
 
 The following primitive types are supported:
- * `int`, which is equivalent to `int32`
- * `uint`, which is equivalent to `uint32`
  * `int8`
  * `uint8`
  * `int16`

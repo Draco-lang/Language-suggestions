@@ -46,7 +46,7 @@ Defining a local function inside another function is allowed.
 
 ```swift
 func main(): int {
-    func first(a: int, b: int) = a;
+    func first(a: int, b: int): int = a;
 
     return first(1, 2); // OK
 }

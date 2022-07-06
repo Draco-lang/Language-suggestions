@@ -17,19 +17,19 @@ Legend:
    * free-functions proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)
    * member functions/methods proposed in the issue about [record types](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/41)
  * 🟡 Control structures
-   * If-else
+   * 🟡 If-else
      * Proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)
-   * While-loop
+   * 🟡 While-loop
      * Proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)
-   * For-loop
+   * 🟡 For-loop
      * Proposed in [proposal 0.2](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/40)
-   * Match
+   * 🟡 Match
      * Proposed in the [pattern matching issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/44)
-   * Goto
+   * 🟡 Goto
      * Proposed in the [goto and implicit loop labels issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/45)
-   * Break/continue in loops
+   * 🟡 Break/continue in loops
      * Proposed in the [goto and implicit loop labels issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/45) as specialized labels
-   * Let ... in construct
+   * 🟡 Let ... in construct
      * [Proposal](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/51)
  * 🟡 Literal values
    * Proposal in the [literal values issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/50)
@@ -73,6 +73,8 @@ Legend:
    * For types, nothing is mentioned yet
  * 🟡 Nullability
    * The issue [about erasable nullables](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/24)
+ * 🔴 Casting
+   * Not mentioned anywhere yet
 
 ## Special features
 

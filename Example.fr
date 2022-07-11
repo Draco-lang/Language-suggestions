@@ -1,9 +1,9 @@
 // this file gives a rough overview of the language's features
 // it will change because not all features are established yet
 
-module Example
+module Example;
 
-import System.Console
+import System.Console;
 
 internal func add(a: int32, b: int32): _ = a + b;
 
@@ -23,7 +23,7 @@ internal func sum(min: int32, max: int32): _ {
     return s;
 }
 
-func main(): int {
+func main(): int32 {
     val s = sum(10, 20);
     Console.WriteLine(s);
     val f = distance(5.5, 5.0, 10.6, 5.5);

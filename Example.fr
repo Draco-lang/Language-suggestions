@@ -8,13 +8,13 @@ import System.Console;
 type Fraction(numerator: int32, denominator: int32);
 
 impl Fraction {
-    func multiply(this, other: Frcation): Fraction {
+    func multiply(this, other: Fraction): Fraction {
         val numerator = this.numerator * other.numerator;
         val denominator = this.denominator * other.denominator;
         return Fraction(numerator, denominator);
     }
     
-    func divide(this, other: Frcation): Fraction {
+    func divide(this, other: Fraction): Fraction {
         val numerator = this.numerator * other.denominator;
         val denominator = this.denominator * other.numerator;
         return Fraction(numerator, denominator);

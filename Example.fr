@@ -5,15 +5,23 @@ module Example;
 
 import System.Console;
 
-type BasicMath(num1: int32, num2: int32);
+type Fraction(numerator: int32, denominator: int32);
 
-impl BasicMath {
-    func add(this): int32 {
-        return this.num1 + this.num2;
+impl Fraction {
+    func multiply(this, other: Frcation): Fraction {
+        val numerator = this.numerator * other.numerator;
+        val denominator = this.denominator * other.denominator;
+        return Fraction(numerator, denominator);
     }
     
-    func sub(this): int32 {
-        return this.num1 - this.num2;
+    func divide(this, other: Frcation): Fraction {
+        val numerator = this.numerator * other.denominator;
+        val denominator = this.denominator * other.numerator;
+        return Fraction(numerator, denominator);
+    }
+    
+    func ToString(this): _ {
+        return "${this.numerator} / ${this.denominator}";
     }
 }
 
@@ -40,8 +48,12 @@ func main(): int32 {
     Console.WriteLine(s);
     val f = distance(5.5, 5.0, 10.6, 5.5);
     
-    val math = BasicMath(2, 3);
-    Console.Writeline("2 + 3 = ${math.add()}");
-    Console.Writeline("2 - 3 = ${math.sub()}");
+    val fractionTwoThirds = Fraction(2, 3);
+    val fractionOneFifth = Fraction(1, 5);
+    val fractionMultiplied = fractionTwoThirds.multiply(fractionOneFifth); // 2/15
+    val fractionDivided = fractionTwoThirds.divide(fractionOneFifth); // 10/3
+    Console.WriteLine("Multiplied: ${fractionMultiplied.ToString()}");
+    Console.WriteLine("Divided: ${fractionDivided.ToString()}");
+    
     return 0;
 }

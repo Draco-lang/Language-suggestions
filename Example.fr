@@ -5,6 +5,24 @@ module Example;
 
 import System.Console;
 
+type Fraction(numerator: int32, denominator: int32);
+
+impl Fraction {
+    func multiply(this, other: Fraction): Fraction {
+        val numerator = this.numerator * other.numerator;
+        val denominator = this.denominator * other.denominator;
+        return Fraction(numerator, denominator);
+    }
+    
+    func divide(this, other: Fraction): Fraction {
+        val numerator = this.numerator * other.denominator;
+        val denominator = this.denominator * other.numerator;
+        return Fraction(numerator, denominator);
+    }
+    
+    func ToString(this): string = "${this.numerator} / ${this.denominator}";
+}
+
 internal func add(a: int32, b: int32): _ = a + b;
 
 func distance(x1: float32, y1: float32, x2: float32, y2: float32): float32 {
@@ -27,6 +45,12 @@ func main(): int32 {
     val s = sum(10, 20);
     Console.WriteLine(s);
     val f = distance(5.5, 5.0, 10.6, 5.5);
+    
+    val frac1 = Fraction(2, 3);
+    val frac2 = Fraction(1, 5);
+    val multiplied = frac1.multiply(frac2); 
+    Console.WriteLine("Multiplied: $multiplied"); // 2/15
+    Console.WriteLine("Divided: ${frac1.divide(frac2)}"); // 10/3
     
     return 0;
 }

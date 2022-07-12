@@ -48,12 +48,12 @@ func main(): int32 {
     Console.WriteLine(s);
     val f = distance(5.5, 5.0, 10.6, 5.5);
     
-    val fractionTwoThirds = Fraction(2, 3);
-    val fractionOneFifth = Fraction(1, 5);
-    val fractionMultiplied = fractionTwoThirds.multiply(fractionOneFifth); // 2/15
-    val fractionDivided = fractionTwoThirds.divide(fractionOneFifth); // 10/3
-    Console.WriteLine("Multiplied: ${fractionMultiplied.ToString()}");
-    Console.WriteLine("Divided: ${fractionDivided.ToString()}");
+    val TwoThirds = Fraction(2, 3);
+    val OneFifth = Fraction(1, 5);
+    val Multiplied = TwoThirds.multiply(OneFifth); // 2/15
+    val Divided = TwoThirds.divide(OneFifth); // 10/3
+    Console.WriteLine("Multiplied: ${Multiplied}");
+    Console.WriteLine("Divided: ${Divided}");
     
     return 0;
 }

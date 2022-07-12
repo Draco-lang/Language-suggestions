@@ -5,17 +5,16 @@ module Example;
 
 import System.Console;
 
-type BasicMath(num1:int32, num2:int32);
+type BasicMath(num1: int32, num2: int32);
 
 impl BasicMath
 {
-    func Add(this):int32
-    {
-        return this.num1+this.num2;
+    func add(this): int32 {
+        return this.num1 + this.num2;
     }
-    func Sub(this):int32
-    {
-        return this.num1-this.num2;
+    
+    func sub(this): int32 {
+        return this.num1 - this.num2;
     }
 }
 
@@ -42,8 +41,8 @@ func main(): int32 {
     Console.WriteLine(s);
     val f = distance(5.5, 5.0, 10.6, 5.5);
     
-    val math=BasicMath(2,3);
-    Console.Writeline("2+3="math.Add());
-    Console.Writeline("2-3="math.Sub());
+    val math = BasicMath(2, 3);
+    Console.Writeline("2+3=" + math.add());
+    Console.Writeline("2-3=" + math.sub());
     return 0;
 }

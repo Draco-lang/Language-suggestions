@@ -20,7 +20,7 @@ impl Fraction {
         return Fraction(numerator, denominator);
     }
     
-    func ToString(this): _ = "${this.numerator} / ${this.denominator}";
+    func ToString(this): string = "${this.numerator} / ${this.denominator}";
 }
 
 internal func add(a: int32, b: int32): _ = a + b;

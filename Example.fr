@@ -48,10 +48,9 @@ func main(): int32 {
     
     val frac1 = Fraction(2, 3);
     val frac2 = Fraction(1, 5);
-    val multiplied = frac1.multiply(frac2); // 2/15
-    val divided = frac1.divide(frac2); // 10/3
-    Console.WriteLine("Multiplied: ${multiplied}");
-    Console.WriteLine("Divided: ${divided}");
+    val multiplied = frac1.multiply(frac2); 
+    Console.WriteLine("Multiplied: $multiplied"); // 2/15
+    Console.WriteLine("Divided: ${frac1.divide(frac2)}"); // 10/3
     
     return 0;
 }

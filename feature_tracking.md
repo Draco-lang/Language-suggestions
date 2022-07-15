@@ -9,26 +9,34 @@ Legend:
 
 ## General features
 
- * 🟡 Variables
+ * 🟢 Variables
    * basic structure proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)
    * [The val and var issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/12)
-   * possibility of global variables not yet mentioned
+   * Specification in [RFC0001](https://github.com/LanguageDev/Fresh-Language-suggestions/pull/55) for both global and local variables
  * 🟡 Functions/methods
-   * free-functions proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)
-   * member functions/methods proposed in the issue about [record types](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/41)
+   * 🟢 Free functions
+     * Proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)
+     * Specification in [RFC0001](https://github.com/LanguageDev/Fresh-Language-suggestions/pull/55)
+   * 🟡 Member functions
+     * Proposed in the issue about [record types](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/41)
+   * 🟡 [Main function signatures issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/63)
  * 🟡 Control structures
-   * 🟡 If-else
+   * 🟢 If-else
      * Proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)
-   * 🟡 While-loop
+     * Specification in [RFC0001](https://github.com/LanguageDev/Fresh-Language-suggestions/pull/55)
+   * 🟢 While-loop
      * Proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)
+     * Specification in [RFC0001](https://github.com/LanguageDev/Fresh-Language-suggestions/pull/55)
    * 🟡 For-loop
      * Proposed in [proposal 0.2](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/40)
    * 🟡 Match
      * Proposed in the [pattern matching issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/44)
-   * 🟡 Goto
+   * 🟢 Goto
      * Proposed in the [goto and implicit loop labels issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/45)
-   * 🟡 Break/continue in loops
+     * Specification in [RFC0001](https://github.com/LanguageDev/Fresh-Language-suggestions/pull/55)
+   * 🟢 Break/continue in loops
      * Proposed in the [goto and implicit loop labels issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/45) as specialized labels
+     * Specification in [RFC0001](https://github.com/LanguageDev/Fresh-Language-suggestions/pull/55)
    * 🟡 Let ... in construct
      * [Proposal](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/51)
  * 🟡 Literal values
@@ -46,6 +54,7 @@ Legend:
    * [Exceptions, try-catch-finally proposal](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/54)
  * 🟡 Modules
    * [Issue about declarations and definitions](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/30)
+   * The [module system issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/58)
 
 ## Type-system
 

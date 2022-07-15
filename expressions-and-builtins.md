@@ -36,7 +36,7 @@ The following primitive types are supported:
  * `float64`
  * `unit`, which is roughly equivalent to the `void` type in C#, but is a true type in the type system, not a marker for no-return (meaning that you can for example use it as a generic parameter, or create a variable of type `unit`)
 
-The naming of these types gets rid of the C heritage, which is very inconsistent among the C family. The explicit sizes make sure we don't look up docs to know integer sizes. The convenience aliases `int` and `uint` are in there for "casual" use, when the explicit size is mostly irrelevant for the developer. The slight inconsistency of `byte` and `sbyte` is also removed.
+The naming of these types gets rid of the C heritage, which is very inconsistent among the C family. The explicit sizes make sure we don't look up docs to know integer sizes. The slight inconsistency of `byte` and `sbyte` is also removed.
 
 ## Literals
 

@@ -43,6 +43,7 @@ Legend:
    * Proposal in the [literal values issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/50)
    * [String interpolation issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/53)
    * Verbatim strings not mentioned yet
+   * Specification for primitive literals in [RFC0002](https://github.com/LanguageDev/Fresh-Language-suggestions/pull/56)
  * 🟡 Operators
    * Basic, built-in operators proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)
    * [Exponential operator](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/34)
@@ -50,6 +51,7 @@ Legend:
    * [Inequality syntax](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/35)
    * [Colon as tuple construction](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/22)
    * User-defined operators not mentioned anywhere yet
+   * Specification for basic operators in [RFC0002](https://github.com/LanguageDev/Fresh-Language-suggestions/pull/56)
  * 🟡 Exceptions, throwing, catching
    * [Exceptions, try-catch-finally proposal](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/54)
  * 🟡 Modules
@@ -61,6 +63,7 @@ Legend:
  * 🟡 Built-in primitives
    * Many are proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)
    * There are quite a few left out, never mentioned (like interop primitives)
+   * Specification in [RFC0002](https://github.com/LanguageDev/Fresh-Language-suggestions/pull/56)
  * 🟡 Record types
    * Proposal about the [basics of record types](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/41)
  * 🟡 Discriminated unions

@@ -54,7 +54,7 @@ func main(): int {
 
 ## Return
 
-Return is an expression that evaluates to the `never` type.
+Return is an expression that evaluates to the `unreachable` type.
 
 ### Syntax
 
@@ -72,7 +72,7 @@ Return terminates the currently executed function and returns the value specifie
 
 ### Usage in expressions
 
-The rationale behind `return` being an expression with the `never` type is to be able to terminate computations early, while not tripping up type checking:
+The rationale behind `return` being an expression with the `unreachable` type is to be able to terminate computations early, while not tripping up type checking:
 
 ```cs
 // If return was a statement, there would be an error here, saying that the 'else' branch has type 'unit', but the other branch has type 'int32'
@@ -81,7 +81,7 @@ var x = if (y % 2 == 0) y / 2 else return;
 
 ## Goto
 
-Goto is an expression that evaluates to the `never` type. Labels are statements (or rather, declarations).
+Goto is an expression that evaluates to the `unreachable` type. Labels are statements (or rather, declarations).
 
 ### Syntax
 

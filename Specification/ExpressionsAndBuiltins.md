@@ -35,6 +35,7 @@ The following primitive types are supported:
  * `float32`
  * `float64`
  * `unit`, which is roughly equivalent to the `void` type in C#, but is a true type in the type system, not a marker for no-return (meaning that you can for example use it as a generic parameter, or create a variable of type `unit`)
+ * `never`, which is a type of all expressions that take away the execution control from the evaluated expression. This is the type of all unconditional jumps. `never` is always implicitly convertible to other types.
 
 The naming of these types gets rid of the C heritage, which is very inconsistent among the C family. The slight inconsistency of `byte` and `sbyte` is also removed. The explicit sizes make sure we don't look up docs to know integer sizes.
 

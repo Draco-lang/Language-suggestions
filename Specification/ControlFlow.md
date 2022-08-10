@@ -99,7 +99,7 @@ goto label_name
 
 ### Semantics
 
-Executing a `goto` means jumping the execution to the specified label. The jump can not jump into or our of the containing function (not even into contained or container functions).
+Executing a `goto` means jumping the execution to the specified label. The jump can not jump into or out of the containing function (not even into contained or container functions).
 
 ### Usage in expressions
 

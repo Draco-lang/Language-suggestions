@@ -202,10 +202,10 @@ World!
 
 #### Interpolation
 
-Interpolation introduces a new escape sequence, namely `\(`, which starts the interpolation expression until the matching `)`. For example:
+Interpolation introduces a new escape sequence, namely `\{`, which starts the interpolation expression until the matching `}`. For example:
 
 ```swift
-"1 + 2 = \(1 + 2)"
+"1 + 2 = \{1 + 2}"
 ```
 
 Which would result in the string `1 + 2 = 3`.
@@ -214,7 +214,7 @@ Which would result in the string `1 + 2 = 3`.
 
 The escape-sequences and starting and ending sequences of string literals of both single- and multi-line strings can be changed, to make pasting literal strings easier. This is done by appending the same amount of `#` characters before the starting quotes and after the ending quotes.
 
-For example, if we want to paste the literal string `1 + 2 = \n \(1 + 2)`, we could write it as: `#"1 + 2 = \n \(1 + 2)"#`.
+For example, if we want to paste the literal string `1 + 2 = \n \{1 + 2}`, we could write it as: `#"1 + 2 = \n \{1 + 2}"#`.
 
 Escape sequences can still be used, using the specified amount of `#` characters for the string. For example, `###"Hello,\###nWorld!"###` becomes:
 

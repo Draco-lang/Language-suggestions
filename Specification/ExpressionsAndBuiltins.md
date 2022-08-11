@@ -63,7 +63,7 @@ They would have two forms, the normal decimal-separated form and a scientific fo
 
 ### Escape sequences
 
-They would be enclosed in single-quotes. Escaping would be the usual `\`. Escape sequences would be:
+Escaping would be the usual `\`. Escape sequences would be:
  * `\'`: Just a `'`. It does not have to be escaped in a string literal, but simplifies code-generation for the users. Since it's otherwise meaningless, it's essentially no effort to allow it in string literals. (inspired by C#)
  * `\"`: Just a `"`. It does not have to be escaped in a character literal, but simplifies code-generation for the users. Since it's otherwise meaningless, it's essentially no effort to allow it in character literals. (inspired by C#)
  * `\\`: Escapes the `\` to literally mean a `\`.
@@ -79,11 +79,181 @@ They are enclosed in single-quotes (`'`), like in C#. Any visible character can 
 
 ### String literals
 
-They are enclosed in double-quotes (`"`), like in C#. Any visible character can be inside (no control characters), or an escape sequence.
+There are two variations of string literals: single-line and multi-line strings. This is heavily inspired by the [Swift specifications](https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html). The originating issue is #71.
 
-Verbatim strings and string interpolation is not yet specified, that will come in a later RFC. This document will allow string interpolation to "break" current strings, meaning that by default strings can be decided to be interpolated.
+#### Single-line string literals
 
-Issue for string interpolation is #53.
+Single-line string literals would start and end with double quotes and they can not span multiple lines. They also can't contain non-graphical characters. Example:
+
+```swift
+"Hello, World!"
+```
+
+They can also contain the usual escape sequences:
+
+```swift
+"Hello,\nEarth! \u{1F47D}"
+```
+
+The above is equivalent to
+
+```
+Hello,
+Earth! 👽
+```
+
+#### Multi-line string literals
+
+Multi-line string literals would start and end with 3 double-quotes. The string would start in the next line after the opening quotes and end before the line of the closing quotes. Example:
+
+```swift
+"""
+Hello, World!
+"""
+```
+
+Note, that this string has no newlines in it. It is equivalent to the string `"Hello, World!"`. If you want a leading or trailing newline, you can do:
+
+```swift
+"""
+
+Hello, World!
+
+"""
+```
+
+The placement of the ending quotes determine the amount of whitespaces cut off from each line. Example:
+
+```swift
+"""
+    Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit,
+    sed do eiusmod tempor incididunt
+    ut labore et dolore magna aliqua.
+"""
+```
+
+Here, nothing is cut off, the string is exactly
+
+```
+    Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit,
+    sed do eiusmod tempor incididunt
+    ut labore et dolore magna aliqua.
+```
+
+But if we indent the ending quotes, we can cut off the leading whitespace:
+
+```swift
+"""
+    Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit,
+    sed do eiusmod tempor incididunt
+    ut labore et dolore magna aliqua.
+    """
+```
+
+Now the string is
+
+```
+Lorem ipsum dolor sit amet,
+consectetur adipiscing elit,
+sed do eiusmod tempor incididunt
+ut labore et dolore magna aliqua.
+```
+
+##### Breaking long lines
+
+Breaking long lines in multiline strings can be done using a `\` at the very end of lines. Example:
+
+```swift
+"""
+Hello, \
+World!
+"""
+```
+
+Which equals to `"Hello, World!"`. This looks similar to C-style line continuations, but this is only valid in multiline-string literals.
+
+Note, that `#` changes the sequence here too (later section specifies what these are):
+
+```swift
+#"""
+Hello, \
+World!
+"""#
+```
+
+The above is literally
+
+```
+Hello, \
+World!
+```
+
+To have `Hello, World!`, you'd write
+
+```swift
+#"""
+Hello, \#
+World!
+"""#
+```
+
+#### Interpolation
+
+Interpolation introduces a new escape sequence, namely `\(`, which starts the interpolation expression until the matching `)`. For example:
+
+```swift
+"1 + 2 = \(1 + 2)"
+```
+
+Which would result in the string `1 + 2 = 3`.
+
+#### Extended string delimeter
+
+The escape-sequences and starting and ending sequences of string literals of both single- and multi-line strings can be changed, to make pasting literal strings easier. This is done by appending the same amount of `#` characters before the starting quotes and after the ending quotes.
+
+For example, if we want to paste the literal string `1 + 2 = \n \(1 + 2)`, we could write it as: `#"1 + 2 = \n \(1 + 2)"#`.
+
+Escape sequences can still be used, using the specified amount of `#` characters for the string. For example, `###"Hello,\###nWorld!"###` becomes:
+
+```
+Hello,
+World!
+```
+
+This works for both single-line, and multi-line strings.
+
+**The simplest way we could summarize the behavior, is that the number of #s modify the escape sequence:**
+
+ * no `#` -> `\` is the escape sequence
+ * `#` -> `\#` is the escape sequence
+ * `##` -> `\##` is the escape sequence
+ * `###` -> `\###` is the escape sequence
+ * ...
+
+Another example:
+
+```swift
+#"""
+a = 5 + '\r'
+Hello, World = """
+  abcde e\n \n \r \u093
+"""
+\#u{1F47D}
+"""#
+```
+
+which becomes
+
+```
+a = 5 + '\r'
+Hello, World = """
+  abcde e\n \n \r \u093
+"""
+👽
+```
 
 ## Operators and precedence
 

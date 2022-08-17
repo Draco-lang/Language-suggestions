@@ -19,7 +19,9 @@ Legend:
      * Specification in [RFC0001](https://github.com/LanguageDev/Fresh-Language-suggestions/pull/55)
    * 🟡 Member functions
      * Proposed in the issue about [record types](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/41)
-   * 🟡 [Main function signatures issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/63)
+   * 🟢 Main Function
+      * Proposed in [Main function signatures issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/63)
+      * Specification in [RFC0004](https://github.com/LanguageDev/Fresh-Language-suggestions/pull/78)
  * 🟡 Control structures
    * 🟢 If-else
      * Proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)
@@ -39,11 +41,11 @@ Legend:
      * Specification in [RFC0001](https://github.com/LanguageDev/Fresh-Language-suggestions/pull/55)
    * 🟡 Let ... in construct
      * [Proposal](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/51)
- * 🟡 Literal values
-   * Proposal in the [literal values issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/50)
-   * [String interpolation issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/53)
-   * Verbatim strings not mentioned yet
-   * Specification for primitive literals in [RFC0002](https://github.com/LanguageDev/Fresh-Language-suggestions/pull/56)
+  * 🟢Literal values
+    * Proposal in the [literal values issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/50)
+    * [String interpolation issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/53)
+    * Specification for string literals in [RFC0005](https://github.com/LanguageDev/Fresh-Language-suggestions/pull/79)
+    * Specification for primitive literals in [RFC0002](https://github.com/LanguageDev/Fresh-Language-suggestions/pull/56)
  * 🟡 Operators
    * Basic, built-in operators proposed in [proposal 0.1](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33)
    * [Exponential operator](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/34)

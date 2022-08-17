@@ -10,5 +10,17 @@ While we believe that C# is a beautifully engineered language, a fresh start can
 
  * Why yet another language?
  * Goals of the language
+   * Language philosophy
+   * C# interopability
  * Current status of the project
- * Future plans
+ * Sample snippets
+ * Features that hopefully make a difference
+   * Getting rid of the C heritage
+   * Traits, composition, external extensibility
+   * Compile-time metaprogramming
+ * Design hardships
+   * Limitations of CLR
+   * Limited interopability
+ * Our plans for the future
+   * Specifications to reach 1.0, short roadmap
+   * Strong tooling

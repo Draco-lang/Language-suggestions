@@ -26,17 +26,17 @@ module Math
 {
     func add(a: int32, b: int32): _ = a + b;
 
-    func distance(x1: float32, y1: float32, x2: float32, y2: float32): float32 {
+    export func distance(x1: float32, y1: float32, x2: float32, y2: float32): float32 {
         val diffX = x1 - x2;
         val diffY = y1 - y2;
         (diffX ** 2.0 + diffY ** 2.0) ** 0.5
     }
 
-    func sum(min: int32, max: int32): _ {
+    export func sum(min: int32, max: int32): _ {
         var s: int32 = 0;
         var counter = min;
         while (counter <= max) {
-            s += counter;
+            s = add(s, counter);
             counter += 1;
         }
         return s;

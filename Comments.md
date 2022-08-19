@@ -7,5 +7,5 @@ be added in future RFCs.
 Comment is text that is ignored by the
 compiler.
 ## Single line comments
-Single line comments start by `//` if the `//` 
-is not part of string and they end by newline.
+Single line comments start with `//` if the `//` 
+is not part of string and they end with newline.

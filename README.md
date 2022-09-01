@@ -1,4 +1,8 @@
-# Ideas for .NET Language (temporary name: "Fresh")
+# Draco programming language
+
+**A new .NET programming language in the making!**
+
+<p align="center"><img src="./Resources/Mascot.svg" width=40%></p>
 
 <a href="https://discord.gg/gHfhpPFzYu"><img alt="Discord" src="https://badgen.net/discord/members/gHfhpPFzYu?icon=discord&color=D70&labelColor=F80&label=Join+our+Discord!"></a>
 

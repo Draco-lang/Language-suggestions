@@ -20,7 +20,7 @@ In short, the used syntax will be:
 
 ## Built-in primitive types
 
-Originally defined in the [0.1 proposal](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33).
+Originally defined in the [0.1 proposal](https://github.com/Draco-lang/Language-suggestions/issues/33).
 
 The following primitive types are supported:
  * `int8`
@@ -41,7 +41,7 @@ The naming of these types gets rid of the C heritage, which is very inconsistent
 
 ## Literals
 
-Originally defined in the [literal values issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/50).
+Originally defined in the [literal values issue](https://github.com/Draco-lang/Language-suggestions/issues/50).
 
 **Important**: Parts of this section depend on what we end up in the type inference issue (#42). If we end up deciding that literals always have a fixed type, then we can introduce the usual suffixes for literals. I'm personally not a fan of those, so for now, this proposal assumes that we can agree on literals being specified during inference.
 
@@ -258,7 +258,7 @@ Hello, World = """
 
 ## Operators and precedence
 
-Originally defined in the [0.1 proposal](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/33).
+Originally defined in the [0.1 proposal](https://github.com/Draco-lang/Language-suggestions/issues/33).
 
 The following is the precedence table for the supported operators (highest precedence to lowest):
 

@@ -155,7 +155,7 @@ is also valid, it requires no further specification.
 
 ### Semantics
 
-If the condition (`cond-expr`) evaluates to true, then `then-expr` is evaluated, else `els-expr` is evaluated. If the else branch is omitted, it is assumed to evaluate to unit. The two branches must evaluate to compatible types (see the [type-inference proposal](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/42) for what this will mean exactly).
+If the condition (`cond-expr`) evaluates to true, then `then-expr` is evaluated, else `els-expr` is evaluated. If the else branch is omitted, it is assumed to evaluate to unit. The two branches must evaluate to compatible types (see the [type-inference proposal](https://github.com/Draco-lang/Language-suggestions/issues/42) for what this will mean exactly).
 
 ## While loop
 
@@ -233,4 +233,4 @@ The syntax gives 4 combinations:
  * Only value specified: The type is inferred from the specified value and usage
  * Nothing specified: The type will be inferred from use
 
-On inference, see [the issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/42).
+On inference, see [the issue](https://github.com/Draco-lang/Language-suggestions/issues/42).

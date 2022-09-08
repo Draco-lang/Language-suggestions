@@ -1,0 +1,15 @@
+import Write from System.Console;
+
+func main() {
+    var s = #"""
+import Write from System.Console;
+
+func main() {
+    var s = {0}"""
+{1}
+"""{0};
+    Write(s, '#', s);
+}
+"""#;
+    Write(s, '#', s);
+}

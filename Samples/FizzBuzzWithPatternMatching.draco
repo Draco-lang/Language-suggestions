@@ -1,0 +1,13 @@
+import { Write} from System.Console;
+import Range from System.Linq.Enumerable;
+
+func main() {
+    for(i in Range(100)){
+        i when{
+           |(i mod 3==0)->Write("Fizz")
+           |(i mod 5==0)->Write("Buzz")
+           |else->Write(i);
+        }
+        Write("\n");
+    }
+}

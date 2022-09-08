@@ -1,0 +1,25 @@
+import { Range, Reverse } from System.Linq.Enumerable;
+import { Write, WriteLine } from System.Console;
+
+func main() {
+    func capitalize(s: string): string =
+        "\{char.ToUpper(s[0])}\{s.Substring(1)}";
+
+    func bottles(n: int32): string = n match
+    {
+        0 -> "no more bottles";
+        1 -> "1 bottle";
+        _ -> "\{n} bottles";
+    };
+
+    for (var i in Reverse(Range(1, 99))) {
+        WriteLine("""
+            \{capitalize(bottles(i))} of beer on the wall, \{bottles(i)} of beer.
+            Take one down, pass it around, \{bottles(i - 1)} of beer on the wall.
+            """);
+    }
+    WriteLine("""
+        No more bottles of beer on whe wall, no more bottles of beer.
+        Go to the store and buy some more, 99 bottles of beer on the wall.
+        """);
+}

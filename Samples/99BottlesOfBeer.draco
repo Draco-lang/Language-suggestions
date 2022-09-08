@@ -5,7 +5,7 @@ func main() {
     func capitalize(s: string): string =
         "\{char.ToUpper(s[0])}\{s.Substring(1)}";
 
-    func bottles(n: int32): string = n match
+    func bottles(n: int32): string = match (n)
     {
         0 -> "no more bottles";
         1 -> "1 bottle";

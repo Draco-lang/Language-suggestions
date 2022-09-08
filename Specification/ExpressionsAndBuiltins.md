@@ -201,6 +201,56 @@ World!
 """#
 ```
 
+##### Cutoff rules
+
+The placement of the ending quotes can determine how much to cut off from the start of each line. The cutoff is determined by looking at the ending quote's line, and comparing the sequence of horizontal space characters before it to each line start of the string - except for the opening quotes. In case they match, that prefix is cut off from the content of the string. In case they don't match, it is an error by the compiler.
+
+Using `<TAB>` to mean a tab character and `_` for whitespace, the following strings are valid valid:
+```
+"""
+____hello
+____"""
+```
+
+```
+"""
+<TAB>hello
+<TAB>"""
+```
+
+(The following is also valid, the whitespace is simply not cut off from the string!)
+```
+"""
+<TAB>_hello
+<TAB>"""
+```
+
+```
+"""
+<TAB>_<TAB>hello
+<TAB>_<TAB>"""
+```
+
+And the following strings cause an error:
+
+```
+"""
+hello
+___"""
+```
+
+```
+"""
+_hello
+___"""
+```
+
+```
+"""
+_<TAB>hello
+<TAB>_"""
+```
+
 #### Interpolation
 
 Interpolation introduces a new escape sequence, namely `\{`, which starts the interpolation expression until the matching `}`. For example:

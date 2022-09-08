@@ -1,13 +1,13 @@
-import { Write, WriteLine } from System.Console;
+import WriteLine from System.Console;
 import Range from System.Linq.Enumerable;
 
 func main() {
     for (i in Range(100)) {
-        match (i) {
-            (i mod 3 == 0) -> Write("Fizz");
-            (i mod 5 == 0) -> Write("Buzz");
-            else -> Write(i);
+        match (i mod 3, i mod 5) {
+            (0, 0) -> WriteLine("FizzBuzz");
+            (0, _) -> WriteLine("Fizz");
+            (_, 0) -> WriteLine("Buzz");
+            _ -> WriteLine(i);
         }
-        WriteLine();
     }
 }

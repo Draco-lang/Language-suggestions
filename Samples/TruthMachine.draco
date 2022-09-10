@@ -1,0 +1,12 @@
+import { ReadLine, Write } from System.Console;
+
+func main() {
+    val input = ReadLine();
+    if (input == "0") {
+        Write("0");
+    }
+    else {
+        // We just assume 1 for anything non-0
+        while (true) Write("1");
+    }
+}

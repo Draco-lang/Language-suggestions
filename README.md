@@ -8,7 +8,7 @@
 
 ## I just want to see how the language looks!
 
-[See the example program.](https://github.com/Draco-lang/Language-suggestions/blob/main/Example.fr)
+[See the Samples folder.](./Samples/)
 
 ## The aims of the language
 

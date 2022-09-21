@@ -1,0 +1,14 @@
+import { Write, WriteLine } from System.Console;
+import Range from System.Linq.Enumerable;
+
+func main() {
+    for (i in Range(100)) {
+        if (i mod 3 != 0 and i mod 5 != 0) {
+            WriteLine(i);
+            goto continue;
+        }
+        if (i mod 3 == 0) Write("Fizz");
+        if (i mod 5 == 0) Write("Buzz");
+        WriteLine();
+    }
+}

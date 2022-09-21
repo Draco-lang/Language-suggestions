@@ -54,25 +54,34 @@ func main(): int {
 
 ## Return
 
-Return is a statement.
+Return is an expression that evaluates to the `unreachable` type.
 
 ### Syntax
 
-Return is a statement, with an optional expression to return:
+Return has two syntax variants, with an optional expression to return:
 
 ```swift
-return; // unit return value
+return // unit return value
 
-return expr; // some evaluated expression return value
+return expr // some evaluated expression return value
 ```
 
 ### Semantics
 
-Return terminates the currently executed function and returns the value specified (or unit, if none was specified). If a return statement is omitted from a block-syntax function, it is assumed to return unit at the very end.
+Return terminates the currently executed function and returns the value specified (or unit, if none was specified). If a return expression is omitted from a block-syntax function, it is assumed to return `unit` at the very end.
+
+### Usage in expressions
+
+The rationale behind `return` being an expression with the `unreachable` type is to be able to terminate computations early, while not tripping up type checking:
+
+```cs
+// If return was a statement, there would be an error here, saying that the 'else' branch has type 'unit', but the other branch has type 'int32'
+var x = if (y % 2 == 0) y / 2 else return;
+```
 
 ## Goto
 
-Goto is a statement. Labels are statements (or rather, declarations).
+Goto is an expression that evaluates to the `unreachable` type. Labels are statements (or rather, declarations).
 
 ### Syntax
 
@@ -82,15 +91,26 @@ The syntax for a labels is:
 label_name:
 ```
 
-The syntax of a goto statement is:
+The syntax of a goto expression is:
 
 ```cs
-goto label_name;
+goto label_name
 ```
 
 ### Semantics
 
-Executing a `goto` statement means jumping the execution to the specified label. The jump can not jump into or our of the containing function (not even into contained or container functions).
+Executing a `goto` means jumping the execution to the specified label. The jump can not jump into or out of the containing function (not even into contained or container functions).
+
+### Usage in expressions
+
+The rationale behind it being an expression is similar to the return expression:
+
+```cs
+retry:
+    n = n / 2;
+    x += 1;
+    var mustBeZero = if (n == 0) x else goto retry;
+```
 
 ## Code blocks
 
@@ -135,7 +155,7 @@ is also valid, it requires no further specification.
 
 ### Semantics
 
-If the condition (`cond-expr`) evaluates to true, then `then-expr` is evaluated, else `els-expr` is evaluated. If the else branch is omitted, it is assumed to evaluate to unit. The two branches must evaluate to compatible types (see the [type-inference proposal](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/42) for what this will mean exactly).
+If the condition (`cond-expr`) evaluates to true, then `then-expr` is evaluated, else `els-expr` is evaluated. If the else branch is omitted, it is assumed to evaluate to unit. The two branches must evaluate to compatible types (see the [type-inference proposal](https://github.com/Draco-lang/Language-suggestions/issues/42) for what this will mean exactly).
 
 ## While loop
 
@@ -213,4 +233,4 @@ The syntax gives 4 combinations:
  * Only value specified: The type is inferred from the specified value and usage
  * Nothing specified: The type will be inferred from use
 
-On inference, see [the issue](https://github.com/LanguageDev/Fresh-Language-suggestions/issues/42).
+On inference, see [the issue](https://github.com/Draco-lang/Language-suggestions/issues/42).

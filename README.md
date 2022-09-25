@@ -5,7 +5,11 @@
     <b>A new .NET programming language in the making!</b>
 </p>
 
-<a href="https://discord.gg/gHfhpPFzYu"><img alt="Discord" src="https://badgen.net/discord/members/gHfhpPFzYu?icon=discord&color=D70&labelColor=F80&label=Join+our+Discord!"></a>
+<hr>
+
+<p align="center">
+    <a href="https://discord.gg/gHfhpPFzYu"><img alt="Discord" src="https://badgen.net/discord/members/gHfhpPFzYu?icon=discord&color=D70&labelColor=F80&label=Join+our+Discord!"></a>
+</p>
 
 ## I just want to see how the language looks!
 

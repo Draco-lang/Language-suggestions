@@ -1,10 +1,11 @@
 # Draco programming language
 
-**A new .NET programming language in the making!**
 
 <p align="center">
-    <img src="./Resources/Logo-Long.svg#gh-light-mode-only" width=40%>
-    <img src="./Resources/Logo-Long-Inverted.svg#gh-dark-mode-only" width=40%>
+    <img src="./Resources/Logo-Long.svg#gh-light-mode-only" width=60%>
+    <img src="./Resources/Logo-Long-Inverted.svg#gh-dark-mode-only" width=60%>
+    <br>
+    <b>A new .NET programming language in the making!</b>
 </p>
 
 <a href="https://discord.gg/gHfhpPFzYu"><img alt="Discord" src="https://badgen.net/discord/members/gHfhpPFzYu?icon=discord&color=D70&labelColor=F80&label=Join+our+Discord!"></a>

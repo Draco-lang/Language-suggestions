@@ -1,6 +1,3 @@
-# Draco programming language
-
-
 <p align="center">
     <img src="./Resources/Logo-Long.svg#gh-light-mode-only" width=60%>
     <img src="./Resources/Logo-Long-Inverted.svg#gh-dark-mode-only" width=60%>

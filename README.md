@@ -3,7 +3,7 @@
     <img src="./Resources/Logo-Long-Inverted.svg#gh-dark-mode-only" width=60%>
 </p>
 
-<h1 align="center">A new .NET programming language in the making</h1>
+<h2 align="center">A new .NET programming language in the making</h1>
 
 <p align="center">
     <a href="https://discord.gg/gHfhpPFzYu"><img alt="Discord" src="https://badgen.net/discord/members/gHfhpPFzYu?icon=discord&color=D70&labelColor=F80&label=Join+our+Discord!"></a>

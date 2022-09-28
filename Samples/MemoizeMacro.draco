@@ -1,0 +1,79 @@
+// Attribute macros are functions annotated with 'attribute_macro', passing in
+// the name of the created attribute as an identifier. The name of the function
+// doesn't matter, it's not related to how you actually invoke the macro. This
+// is useful when there is potential that you need to reuse your macro logic in
+// multiple metaprograms. Other than the attribute, this is a regular function.
+// All syntax-based metaprograms are functions that take in the AST + the
+// optional arguments, then return the modified result or an expansion error.
+// Attribute macros mean that their target is the language element they are
+// annotating and they replace that element with their result. This macro can be
+// used to annotate functions to make them memoize their results by storing
+// already computed results in a dictionary. The biggest difference between this
+// and a Roslyn SourceGenerator, is that here the original function is extended
+// with the new functionality, we don't need to externally augment the function
+// and then reference an externally implemented function in the original
+// implementation.
+
+// The exact APIs is debatable, the point is more towards illustrating how this
+// doesn't have to be a super hard thing to do. Writing syntactic abstractions
+// like this should be simple.
+
+// Here 'unwrap' is used to mean unwrap the Ok value of a Result<T, E>, or
+// return the error on error, similarly to Rust's '?''. The exact syntax is
+// debatable and isn't really an important part of the snippet.
+
+// A builtin macro could be provided that would act as a template engine around
+// the language, this is the role of 'quote!' (just like the Rust crate).
+[attribute_macro(Memoize)]
+func memoize_logic(target: Ast, args: []Ast): Result<Ast, MacroExpansionError> {
+    // First, we assert that the target is a function. The type-checking
+    // functions can conveniently return a Result<T, MacroExpansionError>
+    val target = unwrap target.asFunc(); // Variable shadowing can be lovely!
+
+    // We don't expect any arguments
+    if (args.Length > 0) return MacroExpansionError("Memoization expects no arguments!");
+
+    // We will need this later
+    val argNames = target.Signature.Parameters.Select(p => p.Name);
+
+    // Here #(...) means substitution of an AST
+    return quote!{
+        // Declare a dictionary outside
+        val cache = System.Collections.Generic.Dictionary();
+        // Generate the new function
+        #(target.Signature) // func name(...args): ReturnType
+        {
+            // Build a tuple of parameter names, check if cache has it
+            if (!cache.TryGetValue((#(argNames),...), out val result) {
+                // Not in the cache, invoke the original computation
+                // We a bit cheat here by wrapping it up in a lambda and invoke it
+                result = (func() {
+                    return #(target.Body);
+                })();
+                // Store
+                cache.Add((#(argNames),...), result);
+            }
+            return result;
+        }
+    };
+}
+
+// Example:
+
+[Memoize]
+func fib(n: int32): int32 =
+    if (n < 2) 1
+    else fib(n - 1) + fib(n - 2);
+
+// Expanded to:
+// val cache = System.Collections.Generic.Dictionary();
+// func fib(n: int32): int32 {
+//     if (!cache.TryGetValue((n), out val result)) {
+//         result = (func() {
+//             return if (n < 2) 1
+//                    else fib(n - 1) + fib(n - 2);
+//         })();
+//         cache.Add((n), result);
+//     }
+//     return result;
+// }

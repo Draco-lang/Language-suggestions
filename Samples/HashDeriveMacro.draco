@@ -1,0 +1,43 @@
+from System.Collections.Generic import List;
+
+// Derive macros are a special case of attribute macros. They only append code
+// to the existing target instead of modifying it. This typically allows us to
+// implement extra traits for an annotated type.
+[derive_macro(Hash)]
+func hash_derive(target: Ast, args: []Ast): Result<Ast, MacroExpansionError> {
+    // We expect a type as a target
+    val target = target.asTypeDeclaration();
+
+    // We don't expect any arguments
+    if (args.Length > 0) return MacroExpansionError("Hash derive expects no arguments!");
+
+    // Generate the Add calls to the System.HashCode instance
+    val adds = List();
+    for (m in target.Members) adds.Add(quote!{ hashCode.Add(this.#(m.name)); });
+
+    // Implement the function for the type
+    return quote!{
+        impl #(target.Name) {
+            func GetHashCode(this): int32 {
+                val hashCode = System.HashCode();
+                #(adds)...
+                return hashCode.ToHashCode();
+            }
+        }
+    };
+}
+
+// Example time!
+
+[derive(Hash)]
+type Person(name: string, age: int32);
+
+// The extra generated code:
+impl Person {
+    func GetHashCode(this): int32 {
+        val hashCode = System.HashCode();
+        hashCode.Add(this.name);
+        hashCode.Add(this.age);
+        return hashCode.ToHashCode();
+    }
+}

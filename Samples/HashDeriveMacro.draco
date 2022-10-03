@@ -3,7 +3,7 @@ from System.Collections.Generic import List;
 // Derive macros are a special case of attribute macros. They only append code
 // to the existing target instead of modifying it. This typically allows us to
 // implement extra traits for an annotated type.
-[derive_macro(Hash)]
+@derive_macro(Hash)
 func hash_derive(target: Ast, args: []Ast): Result<Ast, MacroExpansionError> {
     // We expect a type as a target
     val target = target.asTypeDeclaration();
@@ -29,7 +29,7 @@ func hash_derive(target: Ast, args: []Ast): Result<Ast, MacroExpansionError> {
 
 // Example time!
 
-[derive(Hash)]
+@derive(Hash)
 type Person(name: string, age: int32);
 
 // The extra generated code:

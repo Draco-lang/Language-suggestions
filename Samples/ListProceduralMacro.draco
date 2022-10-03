@@ -4,7 +4,7 @@
 // or foo!{arg1, arg2, ...}
 // 
 // The punctuation doesn't matter, it just needs to be pairwise.
-[procedural_macro(list)]
+@procedural_macro(list)
 func make_list(args: []Ast): Result<Ast, MacroExpansionError> {
     val adds = List();
     for (a in args) adds.Add(quote!{ result.Add(#a); });

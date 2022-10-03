@@ -24,7 +24,7 @@
 
 // A builtin macro could be provided that would act as a template engine around
 // the language, this is the role of 'quote!' (just like the Rust crate).
-[attribute_macro(Memoize)]
+@attribute_macro(Memoize)
 func memoize_logic(target: Ast, args: []Ast): Result<Ast, MacroExpansionError> {
     // First, we assert that the target is a function. The type-checking
     // functions can conveniently return a Result<T, MacroExpansionError>
@@ -60,7 +60,7 @@ func memoize_logic(target: Ast, args: []Ast): Result<Ast, MacroExpansionError> {
 
 // Example:
 
-[Memoize]
+@Memoize
 func fib(n: int32): int32 =
     if (n < 2) 1
     else fib(n - 1) + fib(n - 2);

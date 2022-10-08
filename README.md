@@ -9,6 +9,10 @@
     <a href="https://discord.gg/gHfhpPFzYu"><img alt="Discord" src="https://badgen.net/discord/members/gHfhpPFzYu?icon=discord&color=D70&labelColor=F80&label=Join+our+Discord!"></a>
 </p>
 
+### Important about this repository
+
+This was the initial repository we created to formulate very random ideas about designing a language. There are many-many issues discussing design choices ranging from "the usual" to very radical or plain weird ones. **The language isn't the collection of these issues.** We use these issues to initiate discussions, shift perspectives, collect ideas from other languages and so on. Currently, the actual [specification](Specification) is extremely small and bare-bones.
+
 ### I just want to see how the language looks!
 
 [See the Samples folder.](./Samples/)

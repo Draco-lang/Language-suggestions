@@ -29,7 +29,7 @@ The `: ReturnType` part is optional for both syntaxes.
 Omitting the return type means that the return type is `unit` (equivalent to `void` in C#).
 
 ```swift
-func foo(): int {
+func foo(): int32 {
     return 0; // OK
 }
 
@@ -37,7 +37,7 @@ func foo() {
     return 0; // ERROR: integer returned, declared return type was unit
 }
 
-func foo(): int = 0; // OK
+func foo(): int32 = 0; // OK
 
 func foo() = 0; // ERROR: integer returned, declared return type was unit
 ```
@@ -45,8 +45,8 @@ func foo() = 0; // ERROR: integer returned, declared return type was unit
 Defining a local function inside another function is allowed.
 
 ```swift
-func main(): int {
-    func first(a: int, b: int): int = a;
+func main(): int32 {
+    func first(a: int32, b: int32): int32 = a;
 
     return first(1, 2); // OK
 }

@@ -28,7 +28,7 @@ func main() {
 // Expanded to:
 func main() {
     val l = {
-        let result = System.Collections.Generic.List();
+        val result = System.Collections.Generic.List();
         result.Add(1);
         result.Add(2);
         result.Add(3);

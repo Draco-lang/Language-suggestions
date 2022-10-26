@@ -2,7 +2,7 @@
 This RFC defines how we split up code to multiple files, export symbols, import symbols and how do we define reusable units of code.  
 ## Packages and modules
 Package is reusable unit of code, which contains one or more modules, it is equivalent to a c# project and we can generate one nuget package from it.  
-Module is portion of code. Module hierarchy follows the directory structure, meaning that file `bar.draco` in directory `foo` profuces module `foo.bar`. Module folders can group their contribution under the folder's module name. For example, if a folder `math` has files `marix.draco`, `vector.draco` and `quat.draco`, a file called `module.draco` inside `math` can provide a single module interface for all of these. Modules are not visible by default, they need to be exported by their parent module to become visible and then they become part of the public api of the parent module.  
+Module is portion of code. Module hierarchy follows the directory structure, meaning that file `bar.draco` in directory `foo` produces module `foo.bar`. Module folders can group their contribution under the folder's module name. For example, if a folder `math` has files `marix.draco`, `vector.draco` and `quat.draco`, a file called `module.draco` inside `math` can provide a single module interface for all of these. Modules are not visible by default, they need to be exported by their parent module to become visible and then they become part of the public api of the parent module.  
 ## Exporting symbols
 Each module is responsible for exporting their own API towards other modules. Any symbol that should be accessible from the outside should be marked for exporting, using the `export` keyword. Symbols can be exported inline, by adding the `export` keyword before the symbol declaration or as export list, allowning us to alias symbols at the export with the syntax `export <symbol list>`, where `<symbol list>` can be ither symbol name with optional alis using the `as` keyword with the syntax `<symbol name> as <new name>`, or as list of such symbols encapsulated in curly braces and separated by comma.  
 Example of exporting:
@@ -23,10 +23,12 @@ Example of reexporting:
 // Assuming this is foo.fr
 
 // Now, everything is accessible from foo, that was exported by bar, as is
-export * from bar;
+from bar export *;
 
 // Aliased add1, expose everything else as-is from baz
-export { add1 as add_one, * } from baz;
+from baz export { add1 as add_one, * };
 ```
 Syntax for exporting modules is `export <module name>`.  
 **Note**: the module is only visible by its parent module before export, meaning that this is only valid at the module parent.
+## Imporing symbols
+Symbols can be accessed through their fully qualified name, but importing into local scope can be done with the `import` statement, that has syntax `from <module name> import <symbol list>` where symbol list has the same syntax as as symbol list for exporting, meaning that symbols can also be aliased.

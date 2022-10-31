@@ -1,34 +1,37 @@
 # Module System
 This RFC defines how code is split to multiple files, how symbols are exported and imported and how reusable units of code are defined.  
 ## Packages and modules
-A package is a reusable unit of code, which consists of modules. In C# terminology, package is equivalent to a project that can be distributed as a NuGet package. Modules are building blocks of packages, they provide or hide pieces functionality that makes up the package, module can be draco file (such modules will be called just modules from now), or a directory in draco project (such modules will be called module folder), or it can be defined in code using the syntax `module <module name> <code block>`. Module name is same as name of draco file without file extension, or as folder name or if the module is defined in code, the module has the name that was specified for it in code. For example for file `foo.draco` the module name would be `foo` and for folder named `bar` the module name would be also `bar`. Any draco file or a folder declared under module folder will become submodule of the module folder. Modules defined in cod will become submodules of the module they were declared in. Module folders can group their contribution under the folder's module name by having file named `module.draco` under the module folder. Any code declared in this file, will be visible in module of its module folder. Contents of module (submodules are also contents of module) can be accessed with the syntax `<module name>.<name of symbol to access>`. All modules are visible in their parent module, if they should be visible elsewhere, they need to be exported by their parent module to become visible and then they become part of the public api of the parent module. Project name will become root module for given project. This module will not have any code in it. For modules to be visible from outside package they were declared in, they need to be exported from the root of the package.  
+A package is a reusable unit of code, which consists of modules. In C# terminology, package is equivalent to a project that can be distributed as a NuGet package. Modules are building blocks of packages, they provide or hide pieces functionality that makes up the package, module can be draco file (such modules will be called just modules from now), or a directory in draco project (such modules will be called module folder), or it can be defined in code using the syntax `module <module name> <code block>`. Module name is same as name of draco file without file extension, or as folder name, or if the module is defined in code, the module has the name that was specified for it in code. For example for file `foo.draco` the module name would be `foo` and for folder named `bar` the module name would be also `bar`. Any draco file or a folder declared under module folder will become submodule of the module folder. Modules defined in code will become submodules of the module they were declared in. Module folders can group their contribution under the folder's module name by having file named `module.draco` under the module folder. Any code declared in this file, will be visible in module of its module folder. Contents of module (submodules are also contents of module) can be accessed with the syntax `<module name>.<name of symbol to access>`. All modules are visible in their parent module, if they should be visible elsewhere, they need to be exported by their parent module to become visible and then they become part of the public api of the parent module. Project name will become root module for given project. This module will not have any code in it. For modules to be visible from outside package they were declared in, they need to be exported from the root of the package.  
 ## Exporting symbols
-Each module is responsible for exporting their own API towards other modules. Any symbol that should be accessible from the outside must be marked for exporting, using the `export` keyword. Symbols can be exported inline, by adding the `export` keyword before the symbol declaration or as export list, allowning us to alias symbols at the export. The syntax for exporting list of symbols is `export <symbol list>`, where `<symbol list>` can be ither symbol name with optional alis using the `as` keyword with the syntax `<symbol name> as <new name>`, or as list of such symbols encapsulated in curly braces and separated by comma.  
+Each module is responsible for exporting their own API towards other modules. Any symbol that should be accessible from the outside must be marked for exporting, using the `export` keyword. Symbols can be exported inline, by adding the `export` keyword before the symbol declaration or as export list, allowning to alias symbols at the export. The syntax for exporting list of symbols is `export <symbol list>`, where `<symbol list>` can be ither symbol name (submodules are also valid symbols) with optional alis using the `as` keyword with the syntax `<symbol name> as <new name>`, or as list of such symbols encapsulated in curly braces and separated by comma.  
 Example of exporting:
 ```js
-// Exporting members in an export list, aliasing y
-export { y as second, add1 };
+// Exporting members in an export list, aliasing pow
+export { pow as power, abs };
 
-// Exporting x inline
-export var x = 0;
+// Exporting PI inline
+export val PI = 3.1415;
 
-var y: int32;
+func pow(num: int32, exp: it32): int32{
+  var i = 0;
+  var result = 1;
+  while(i < exp){
+    result = result * num;
+    i = i + 1;
+  }
+  return result;
+}
 
-func add1(x: int32): int32 = x + 1;
+func abs(x: int32): int32 = if(x > 0) x else -x;
 ```
-Symbols can also be re-exported using the `from` keyword with syntax `from <module name> export <symbol list>` where instead of symbol list we can also use `*` to export everything. Re-exported symbols will be propagated directly to the parent module. Meaning that the parent module will contain the symbols directly.  
+Symbols can also be re-exported using the `from` keyword with syntax `from <module name> export <symbol list>` where instead of symbol name we can also use `*` to export everything. Re-exported symbols will be propagated to the parent module. Meaning that the parent module will contain the symbols directly.  
 Example of re-exporting:
 ```js
-// Assuming this is foo.fr
+// Assuming this is module math
 
-// Now, everything is accessible from foo, that was exported by bar, as is
-from bar export *;
-
-// Aliased add1, expose everything else as-is from baz
-from baz export { add1 as add_one, * };
+// Now, everything is accessible from math directly
+from constants export { GravityConstant as G, * };
 ```
-Syntax for exporting modules is `export <module name>`.  
-**Note**: the module is only visible by its parent module before export, meaning that this is only valid at the module parent.
 ## Imporing symbols
 Importing symbols into local scope can be done with the `import` statement, that has syntax `from <module name> import <symbol list>` where symbol list has the same syntax as as symbol list for exporting, meaning that symbols can also be aliased or you can import every symbol in module using `*`.  
 Example of importing:

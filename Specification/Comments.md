@@ -21,6 +21,6 @@ Example of documentation comment:
 /// - num2: sexond number to add
 /// # returns 
 /// Two numbers added together
-func Add(num1: int32, num2: int32): int32 = num1 + num2
+func Add(num1: int32, num2: int32): int32 = num1 + num2;
 ```
  

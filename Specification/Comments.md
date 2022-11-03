@@ -5,7 +5,7 @@ Comments are non-functional text written in the code that does not alter the beh
 ## Single line comments
 Single line comments start with `//` if the `//` is not part of string and they end with newline.
 ## Documentation comments
-Documentation comments are special type of comments, which adds description to symbol. In draco, documentation comments are writen using markdown. Documentation comments are continuous lines that start with `///` and everything that comes after `///` is interpreted as markdown. Documentation comment is added to symbol declared directly under given comment, if there is no such symbol, the documentation comment is ignored like a normal comment. Every markdown heading is a section in the documentation comment. Documentation comment is expected to be either simple description without any section, or more complex structure containing sections. There is small set of standard sections, but the user can use any section they want.  
+Documentation comments are special type of comments, which adds description to symbol. In draco, documentation comments are writen using markdown. Documentation comments are continuous lines that start with `///` and everything that comes after `///` is interpreted as markdown. Documentation comment is added to symbol declared directly under given comment, if there is no such symbol, the documentation comment is ignored like a normal comment. Linking to other symbols can be done using the syntax `[<Text that should be displayed>](<Path to the symbol>)`. The documentation comment is in the scope defined by the symbol the comment is tied to, If the symbol declares a scope, such symbols are for example function or module, this is so things like function arguments can be displayed. if the symbol doesn't define scope, the documentation comment is in the scope the symbol is declared in, such symbols are for example variables. For example `[vector](math.vector)` will show text `vector`, which links to the symbol `math.vector`. Every markdown heading is a section in the documentation comment. Documentation comment is expected to be either simple description without any section, or more complex structure containing sections. There is small set of standard sections, but the user can use any section they want.  
 The standard sections are:  
 `summary` - general summary of what the symbol represents.  
 `returns` - value the symbol returns (only makes sense for functions).  
@@ -17,8 +17,8 @@ Example of documentation comment:
 /// # summary
 /// Function that adds 2 numbers
 /// # parameters
-/// - num1: first number to add
-/// - num2: sexond number to add
+/// - [num1](num1): first number to add
+/// - [num1](num1): sexond number to add
 /// # returns 
 /// Two numbers added together
 func Add(num1: int32, num2: int32): int32 = num1 + num2;

@@ -1,7 +1,7 @@
 # Comments in code
 This document specifies regular comments and documentation comments.
 ## What are comments
-Comments are non-functional text written in the code that does not alter the behavior of the language element. They are simply there for human readers to explain the purpose of a code segment.
+Comments are non-functional text written in the code that does not alter the behavior of the language element.  
 ## Single line comments
 Single line comments start with `//` if the `//` is not part of string and they end with newline.
 ## Documentation comments

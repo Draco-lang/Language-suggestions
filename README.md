@@ -9,6 +9,10 @@
     <a href="https://discord.gg/gHfhpPFzYu"><img alt="Discord" src="https://badgen.net/discord/members/gHfhpPFzYu?icon=discord&color=D70&labelColor=F80&label=Join+our+Discord!"></a>
 </p>
 
+### Important about this repository
+
+This was the initial repository we created to formulate very random ideas about designing a language. There are many-many issues discussing design choices ranging from "the usual" to very radical or plain weird ones. **The language isn't the collection of these issues.** We use these issues to initiate discussions, shift perspectives, collect ideas from other languages and so on. Currently, the actual [specification](Specification) is extremely small and bare-bones.
+
 ### I just want to see how the language looks!
 
 [See the Samples folder.](./Samples/)
@@ -17,7 +21,7 @@
 
 > I want to do to C# what Kotlin did to Java
 
-It should be a high-level language which could replace C#. Here are a few major key points that we aren't changing:
+Draco should be a high-level language which could replace C#. Here are a few major key points that we aren't changing:
 
  * It is strongly statically typed
  * It is not academic & should be easily used by a regular .NET developer
@@ -28,7 +32,7 @@ It should be a high-level language which could replace C#. Here are a few major 
 
 ### Current state of the project
 
-**Note: There is no working compiler yet, but we are getting close to a minimal feature set that can be implemented.**
+There is a very basic and not finished [Compiler](https://github.com/Draco-lang/Compiler).
 
 Right now we are still working out the core of the language. We do this by collecting ideas, inspiration, frustrating things and useful bits from existing languages. We have started working on a specification (see the [Specification](Specification) folder) and you can see an [example program](Example.fr) that we try to keep updated to more or less reflect our current idea of the language. You can also take a look at the [feature tracking](FeatureTracking.md) document, where we keep track of all features we want to investigate.
 

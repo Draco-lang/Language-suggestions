@@ -1,0 +1,37 @@
+// Procedural macros are invoked by 
+//    foo!(arg1, arg2, ...)
+// or foo![arg1, arg2, ...]
+// or foo!{arg1, arg2, ...}
+// 
+// The punctuation doesn't matter, it just needs to be pairwise.
+@procedural_macro(list)
+func make_list(args: []Ast): Result<Ast, MacroExpansionError> {
+    val adds = List();
+    for (a in args) adds.Add(quote!{ result.Add(#a); });
+
+    return quote!{
+        // In a new block to be a valid expression
+        {
+            val result = System.Collections.Generic.List();
+            #(adds)...
+            result
+        }
+    };
+}
+
+// Example time!
+
+func main() {
+    val l = list![1, 2, 3];
+}
+
+// Expanded to:
+func main() {
+    val l = {
+        val result = System.Collections.Generic.List();
+        result.Add(1);
+        result.Add(2);
+        result.Add(3);
+        result
+    };
+}

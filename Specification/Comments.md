@@ -9,11 +9,11 @@ Documentation comments are a special type of comments, which add a description t
 The documentation comment is in the same scope as the element it is attached to. If the element exposes any elements the comment could refer to, these elements are implicitly accessible for the comment without any further qualifications. This is the case for function definitions and their parameters. For example, if we use function `Abs` with one parameter `num`, this parameter can be accessed like `[num](num)`
 Every markdown heading is a section in the documentation comment. Documentation comment is expected to be either a simple description without any section or a more complex structure containing sections. There is a small set of standard sections, but the user can use any section they want.  
 The standard sections are:  
-`summary` - general summary of what the symbol represents.  
-`returns` - value the symbol returns (only makes sense for functions).  
-`parameters` - description of the parameters the symbol accepts, ither enumeration or subsections are expected here (only makes sense for functions).  
-`exception` - exceptions the symbol throws (only makes sense for functions).  
-`example` - code example how to use the symbol.  
+`summary` - general summary of what the language element represents.  
+`returns` - value the language element returns (only makes sense for functions).  
+`parameters` - description of the parameters the language element accepts, ither enumeration or subsections are expected here (only makes sense for functions).  
+`exception` - exceptions the language element throws (only makes sense for functions).  
+`example` - code example how to use the language element.  
 Example of documentation comment:
 ```js
 /// # summary

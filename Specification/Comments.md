@@ -17,12 +17,12 @@ The standard sections are:
 Example of documentation comment:
 ```js
 /// # summary
-/// Function that adds 2 numbers
+/// Function, that adds 2 numbers.
 /// # parameters
-/// - [num1](num1): first number to add
-/// - [num1](num1): second number to add
+///  - [num1](num1): The first number to add.
+///  - [num1](num1): The second number to add.
 /// # returns 
-/// Two numbers added together
+/// The sum of [num1](num1) and [num2](num2).
 func Add(num1: int32, num2: int32): int32 = num1 + num2;
 ```
 The documentation generated from this comment could look something like:

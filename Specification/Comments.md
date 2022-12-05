@@ -30,8 +30,8 @@ The documentation generated from this comment could look something like:
 <b>summary</b>
 Function, that adds 2 numbers.
 <b>parameters</b>
-- <i><a href = "Comments.md">num1</a></i>: The first number to add.
-- <i><a href = "Comments.md">num2</a></i>: The second number to add.
+<i><a href = "Comments.md">num1</a></i>: The first number to add.
+<i><a href = "Comments.md">num2</a></i>: The second number to add.
 <b>returns</b>
 The sum of <a href = "Comments.md">num1</a> and <a href = "Comments.md">num2</a>.
 </pre>

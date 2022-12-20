@@ -52,7 +52,7 @@ Legend:
    * [Implies operator](https://github.com/Draco-lang/Language-suggestions/issues/36)
    * [Inequality syntax](https://github.com/Draco-lang/Language-suggestions/issues/35)
    * [Colon as tuple construction](https://github.com/Draco-lang/Language-suggestions/issues/22)
-   * User-defined operators not mentioned anywhere yet
+   * [User-defined operators](https://github.com/Draco-lang/Language-suggestions/issues/72)
    * Specification for basic operators in [RFC0002](https://github.com/Draco-lang/Language-suggestions/pull/56)
  * 🟡 Exceptions, throwing, catching
    * [Exceptions, try-catch-finally proposal](https://github.com/Draco-lang/Language-suggestions/issues/54)
@@ -117,7 +117,8 @@ Legend:
 
 ## Other
 
- * 🟡 Documentation
+ * 🟢 Documentation
    * [Documentation comments issue](https://github.com/Draco-lang/Language-suggestions/issues/37)
+   * Specifications in [RFC0009](https://github.com/Draco-lang/Language-suggestions/pull/102)
  * 🟡 Enforcing TCO
    * [tailrec proposal](https://github.com/Draco-lang/Language-suggestions/issues/11)

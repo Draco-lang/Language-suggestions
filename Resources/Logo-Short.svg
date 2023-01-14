@@ -2,20 +2,20 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="119.89506mm"
    height="114.05866mm"
    viewBox="0 0 119.89506 114.05866"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="Logo-Short.svg">
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="Logo-Short.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,11 +25,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="70.850721"
-     inkscape:cy="175.98107"
+     inkscape:zoom="2.0000001"
+     inkscape:cx="316.49999"
+     inkscape:cy="253.74999"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer26"
+     inkscape:current-layer="layer7"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1001"
@@ -42,7 +42,10 @@
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0" />
+     fit-margin-bottom="0"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -94,8 +97,8 @@
          id="path861"
          inkscape:connector-curvature="0" />
       <path
-         style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="m 72.56982,236.50165 -6.558791,-0.0905 c 0,0 5.7726,-5.24809 6.65252,-13.26792 z"
+         style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 72.56982,236.50165 -6.972332,-0.0158 c 0,0 6.186141,-5.3228 7.066061,-13.34263 z"
          id="path901-7"
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="cccc" />
@@ -104,12 +107,6 @@
          style="display:inline;opacity:1;fill:#009a94;fill-opacity:1;stroke:#009a94;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          d="m 22.433459,212.49842 c 0,0 0.45344,11.43178 8.77934,18.21074 0,0 7.323651,6.31124 16.076729,7.11305 0,0 8.418992,1.5368 18.30796,-1.33635 0,0 5.412211,-1.73725 10.022613,-4.81085 0,0 6.147199,-4.14268 8.886719,-7.55036 0,0 2.173989,-2.25541 3.674949,-6.24744 0,0 1.24792,-3.38098 1.40317,-5.74629 0,0 -0.222028,-1.18963 -1.279308,-2.26542 0,0 -0.6584,4.70426 -4.667441,9.84919 0,0 -4.87767,6.48129 -11.8935,9.68852 0,0 -5.87993,3.47451 -14.833459,4.47677 0,0 -7.483541,1.1359 -15.568451,-3.40768 0,0 -3.961551,-1.62263 -7.52661,-8.09441 0,0 -1.627371,-4.26681 -0.892381,-7.34041 0,0 0.790511,-5.96968 2.767271,-8.5975 z m 13.257601,-6.05844 c 0,0 5.10268,-8.17373 13.229169,-12.23698 0,0 5.5279,-2.92931 11.055811,-3.44903 0,0 6.682269,-0.97651 12.2472,1.35438 0,0 21.805461,-8.9542 26.666219,-20.24062 0,0 2.561701,-4.0159 3.477371,-11.22589 0,0 0.32052,-3.81123 -0.0102,-6.36257 l -0.37799,-1.84263 c 0,0 -0.41046,-2.07503 0.18899,-3.77976 0,0 0.78037,-3.42095 3.5203,-6.11626 0,0 0.83523,-1.30295 4.40995,-0.86863 0,0 4.74403,3.30746 9.85556,4.57699 l 6.24743,1.9043 v 0 c 0,0 0.66818,-0.90204 0.46772,-3.14042 0,0 -3.90881,-3.54131 -4.54358,-4.74403 0,0 -1.26954,-3.64155 -4.10928,-6.41447 l -1.50338,-1.73725 c 0,0 -9.68431,-7.9084 -23.216943,-0.29595 0,0 11.403253,-4.66593 16.725443,1.32292 0,0 -6.23722,0.30937 -11.682834,4.68591 0,0 -3.073598,2.40543 -4.476768,5.07812 0,0 -1.503392,2.13816 -2.47224,7.85105 0,0 -0.133641,2.17156 -0.801812,4.10927 0,0 -1.12249,2.89496 -3.15042,5.48993 0,0 -3.7117,3.60418 -10.59356,6.72485 0,0 -7.456609,2.73634 -19.541821,4.67271 0,0 -10.746859,2.38932 -18.364038,9.07106 0,0 -8.514881,6.11219 -12.962571,15.70208 0,0 -3.6257,5.31508 -3.54132,15.96936 z"
          inkscape:connector-curvature="0" />
-      <path
-         style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="m 71.86434,171.30071 -6.22831,0.0939 c 0,0 5.772589,5.24809 6.652519,13.26792 z"
-         id="path901"
-         inkscape:connector-curvature="0"
-         sodipodi:nodetypes="cccc" />
       <path
          inkscape:connector-curvature="0"
          id="path2730"
@@ -121,12 +118,18 @@
          id="path869"
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="ccccccccc" />
+      <path
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 71.86434,171.30071 c -2.20733,-0.004 -6.21662,0 -6.21662,0 0,0 5.7609,5.34199 6.64083,13.36182 0,0 4.84752,-12.76009 0.42428,-13.26497 z"
+         id="path901-8"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccsc" />
     </g>
     <g
        inkscape:groupmode="layer"
        id="layer13"
        inkscape:label="dragon body"
-       style="opacity:1">
+       style="display:inline;opacity:1">
       <flowRoot
          xml:space="preserve"
          id="flowRoot893"
@@ -137,7 +140,8 @@
              height="48.08326"
              x="612.35449"
              y="505.92258" /></flowRegion><flowPara
-           id="flowPara899" /></flowRoot>    </g>
+           id="flowPara899" /></flowRoot>
+    </g>
     <g
        inkscape:groupmode="layer"
        id="layer16"
@@ -147,33 +151,11 @@
        inkscape:groupmode="layer"
        id="layer15"
        inkscape:label="tail"
-       style="opacity:1" />
+       style="display:inline;opacity:1" />
     <g
        inkscape:groupmode="layer"
        id="layer18"
-       inkscape:label="tail end" />
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="layer14"
-     inkscape:label="letters"
-     transform="translate(-6.9110285,-124.2739)">
-    <g
-       inkscape:groupmode="layer"
-       id="layer26"
-       inkscape:label="o" />
-    <g
-       inkscape:groupmode="layer"
-       id="layer31"
-       inkscape:label="c"
+       inkscape:label="tail end"
        style="display:inline" />
-    <g
-       inkscape:groupmode="layer"
-       id="layer23"
-       inkscape:label="a" />
-    <g
-       inkscape:groupmode="layer"
-       id="layer28"
-       inkscape:label="r" />
   </g>
 </svg>

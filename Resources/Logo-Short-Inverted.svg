@@ -2,20 +2,20 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="119.89506mm"
    height="114.05866mm"
    viewBox="0 0 119.89506 114.05866"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="Logo-Short-Inverted.svg">
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="Logo-Short-Inverted.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,11 +25,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="102.2228"
-     inkscape:cy="187.97294"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="91.923882"
+     inkscape:cy="149.19953"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer26"
+     inkscape:current-layer="layer7"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1001"
@@ -42,7 +42,10 @@
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0" />
+     fit-margin-bottom="0"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -94,8 +97,8 @@
          id="path861"
          inkscape:connector-curvature="0" />
       <path
-         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="m 72.56982,236.50165 -6.558791,-0.0905 c 0,0 5.7726,-5.24809 6.65252,-13.26792 z"
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 72.56982,236.50165 -6.972332,-0.0158 c 0,0 6.186141,-5.3228 7.066061,-13.34263 z"
          id="path901-7"
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="cccc" />
@@ -116,8 +119,8 @@
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="ccccccccc" />
       <path
-         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="m 71.864338,171.30071 c -2.207332,-0.004 -6.228308,0.0939 -6.228308,0.0939 0,0 5.772588,5.24809 6.652519,13.26792 0,0 4.847519,-12.76009 0.42428,-13.26497 z"
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 71.864338,171.30071 c -2.207332,-0.004 -6.216615,0 -6.216615,0 0,0 5.760895,5.34199 6.640826,13.36182 0,0 4.847519,-12.76009 0.42428,-13.26497 z"
          id="path901"
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="cccsc" />
@@ -137,7 +140,8 @@
              height="48.08326"
              x="612.35449"
              y="505.92258" /></flowRegion><flowPara
-           id="flowPara899" /></flowRoot>    </g>
+           id="flowPara899" /></flowRoot>
+    </g>
     <g
        inkscape:groupmode="layer"
        id="layer16"

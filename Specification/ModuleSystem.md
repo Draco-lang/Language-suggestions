@@ -16,7 +16,7 @@ public func abs(x: int32): int32 = if(x > 0) x else -x;
 // Marking member as internal
 internal val PI = 3.1415;
 ```
-## Imporing symbols
+## Importing symbols
 Importing symbols into local scope can be done with the `import` statement. The import statement has the syntax `import <path to module | path to module member>`. You can import module, in that case you bring every member of that module into scope, or you can also import single module member, than only the member is brought to scope. If only single module member is imported, you can alias it with the syntax `import <alias name> = <path to module member>`, in such case the module member will be useable by its new name.  
 Example of importing:
 ```js

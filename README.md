@@ -34,7 +34,7 @@ Draco should be a high-level language which could replace C#. Here are a few maj
 
 There is a very basic and not finished [Compiler](https://github.com/Draco-lang/Compiler).
 
-Right now we are still working out the core of the language. We do this by collecting ideas, inspiration, frustrating things and useful bits from existing languages. We have started working on a specification (see the [Specification](Specification) folder) and you can see an [example program](Example.fr) that we try to keep updated to more or less reflect our current idea of the language. You can also take a look at the [feature tracking](FeatureTracking.md) document, where we keep track of all features we want to investigate.
+Right now we are still working out the core of the language. We do this by collecting ideas, inspiration, frustrating things and useful bits from existing languages. We have started working on a specification (see the [Specification](Specification) folder) and you can see an [examples folder](./Samples/) that we try to keep updated to more or less reflect our current idea of the language. You can also take a look at the [feature tracking](FeatureTracking.md) document, where we keep track of all features we want to investigate.
 
 ### Our workflow
 

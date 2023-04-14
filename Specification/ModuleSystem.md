@@ -8,7 +8,7 @@ Contents of a module (submodules are also contents of a module) can be accessed 
 A package is defined by file `<package name>.dracoproj`, which is a msbuild project file.
 ## Visibility of language elements
 Langue elements can have three types of visibility in draco: `public`, `internal` and `private`.
-Any language element marked as `public` will be visible outside of the package. Language elements marked as `internal` will be visible everywhere inside one package. Language elements not marked by any visibility modifier will be considered private and will be visible only inside the module they were declared in. The syntax for marking language elements visibility is `<type of visibility> <language element declaration>`.
+Any language element marked as `public` will be visible outside of the package. Language elements marked as `internal` will be visible everywhere inside one package. Language elements not marked by any visibility modifier will be considered private and will be visible only inside the module they were declared in. The syntax for marking language elements visibility is `<type of visibility> <language element declaration>`.  
 
 Example of visibility:
 ```c#
@@ -22,15 +22,30 @@ val PI = 3.1415;
 internal func CircleCircumference(r: int32) = 2 * PI * r;
 ```
 ## Importing language elements
-Importing language elements into local scope can be done with the `import` statement. The import statement has the syntax `import <path to module | path to module member>`. You can import a module, in which case you bring every member of that module into scope, or you can also import single module member, then only that member is brought into scope. If only a single module member is imported, you can alias it with the syntax `import <alias name> = <path to module member>`, in such case the module member will be usable by its new name. 
+Importing language elements into local scope can be done with the `import` statement. The import statement can have two forms. You can either import a module, such import statement has the syntax `import <path to module>`. In this case, the import statement brings every member of that module into scope. You can also import a single module member while aliasing that member, then only that member is brought into the scope and can be used under its aliased name. The syntax for this import is `import <alias name> = <path to module member>`. Import statements must always be on the top of a scope. If an import in a parent scope imports a language element with the same name as an import in a child scope, the element imported in the child scope will be used.
+
 Example of importing:
 ```js
 // Import every member of the module System.Console
 import System.Console;
 // Import single type, this is different than the above example, because this type is not static, which means it is not a module
-import System.IO.Stream;
+import Stream = System.IO.Stream;
 // Import WriteLine from System.Console and alias it as println
 import println = System.Console.WriteLine;
+
+func main(){
+  // Full name here would be System.Console.Writeline
+  WriteLine();
+
+  // Child scope
+  {
+    // Foo.Console also defines WriteLine
+    import Foo.Console;
+
+    // Full name here would be Foo.Console.WriteLine
+    WriteLine();
+  }
+}
 ```
 
 ## Example of module system inside a project

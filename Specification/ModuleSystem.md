@@ -8,15 +8,18 @@ Contents of a module (submodules are also contents of a module) can be accessed 
 A package is defined by file `<package name>.dracoproj`, which is a msbuild project file.
 ## Visibility of language elements
 Langue elements can have three types of visibility in draco: `public`, `internal` and `private`.
-Any language element marked as `public` will be visible outside of the package. Language elements marked as `internal` will be visible everywhere inside one package. Language elements not marked by any visibility modifier will be considered private and will be visible only inside the module they were declared in. The default visibilty is `private`. The syntax for marking language elements visibility is `<type of visibility> <language element declaration>`.
+Any language element marked as `public` will be visible outside of the package. Language elements marked as `internal` will be visible everywhere inside one package. Language elements not marked by any visibility modifier will be considered private and will be visible only inside the module they were declared in. The syntax for marking language elements visibility is `<type of visibility> <language element declaration>`.
 
 Example of visibility:
 ```c#
 // Marking function as public
 public func abs(x: int32): int32 = if(x > 0) x else -x;
 
-// Marking member as internal
-internal val PI = 3.1415;
+// Member is not marked by any visibility, it is private
+val PI = 3.1415;
+
+// Marking function as internal
+internal func CircleCircumference(r: int32) = 2 * PI * r;
 ```
 ## Importing language elements
 Importing language elements into local scope can be done with the `import` statement. The import statement has the syntax `import <path to module | path to module member>`. You can import a module, in which case you bring every member of that module into scope, or you can also import single module member, then only that member is brought into scope. If only a single module member is imported, you can alias it with the syntax `import <alias name> = <path to module member>`, in such case the module member will be usable by its new name. 

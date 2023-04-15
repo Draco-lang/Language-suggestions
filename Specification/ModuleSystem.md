@@ -10,7 +10,7 @@ A package is defined by file `<package name>.dracoproj`, which is a msbuild proj
 Language elements can have three types of visibility in Draco: `public`, `internal` and `private`.
 Any language element marked as `public` will be visible outside of the package, meaning that consumer code can reference it. Language elements marked as `internal` will be visible everywhere inside the defining package. Language elements not marked by any visibility modifier will be considered private and will be visible only inside the module they were declared in. The syntax for marking language elements visibility is `<type of visibility> <language element declaration>`.  
 
-Example of visibility:
+Example of visibility modifiers:
 ```c#
 // Marking function as public
 public func abs(x: int32): int32 = if(x > 0) x else -x;

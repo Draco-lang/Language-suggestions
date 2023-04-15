@@ -7,7 +7,7 @@ If a folder declared in package is not declared in the top level package folder,
 Contents of a module (submodules are also contents of a module) can be accessed with the syntax `<module name>.<name of the language element to access>`.
 A package is defined by file `<package name>.dracoproj`, which is a msbuild project file.
 ## Visibility of language elements
-Langue elements can have three types of visibility in draco: `public`, `internal` and `private`.
+Language elements can have three types of visibility in Draco: `public`, `internal` and `private`.
 Any language element marked as `public` will be visible outside of the package. Language elements marked as `internal` will be visible everywhere inside one package. Language elements not marked by any visibility modifier will be considered private and will be visible only inside the module they were declared in. The syntax for marking language elements visibility is `<type of visibility> <language element declaration>`.  
 
 Example of visibility:

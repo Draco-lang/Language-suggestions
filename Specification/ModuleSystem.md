@@ -45,6 +45,8 @@ import println = System.Console.WriteLine;
 func main(){
   // References System.Console.Writeline
   WriteLine();
+  // References System.Console.Writeline
+  println();
 
   // Child scope
   {

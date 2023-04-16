@@ -4,7 +4,7 @@ This document defines how code is split to multiple files, how symbols are expor
 ## Packages and modules
 A package is a reusable unit of code that consists of modules. In C# terminology, a package is equivalent to a project. Modules are building blocks of packages, they provide or hide pieces of functionality that make up the package.
 A module is a collection of source files within a folder. Every source file in the folder contributes to the module. Modules can also be defined in code using the syntax `module <module name> <code block>`.
-If a module is within another module (the folder is within another folder), it is considered a submodule of that parent module. Modules defined in code will become submodules of the module they were declared in.
+If a module is within another module (the folder is within another folder), it is considered a submodule of that parent module. Modules defined in code will become submodules of the module they were declared in. The only module that doesn't have a parent module (it is not a submodule) is the root module of the package. A root module is a collection of source files in the same folder as the projectfile.
 Contents of a module (submodules are also contents of a module) can be accessed with the syntax `<module name>.<name of the language element to access>`.
 A package is defined by the projectfile `<package name>.dracoproj`, which is an MSBuild project file with a special extension.
 

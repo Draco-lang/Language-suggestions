@@ -55,6 +55,8 @@ func main(){
 
     // References Foo.Console.WriteLine
     WriteLine();
+    // References System.Console.Writeline
+    println();
   }
 }
 ```

@@ -21,7 +21,7 @@ public func abs(x: int32): int32 = if(x > 0) x else -x;
 val PI = 3.1415;
 
 // Marking function as internal
-internal func CircleCircumference(r: int32): int32 = 2 * PI * r;
+internal func CircleCircumference(r: float64): float64 = 2 * PI * r;
 ```
 
 ## Importing language elements

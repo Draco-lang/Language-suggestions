@@ -58,9 +58,9 @@ func bar() {
 
 ## Resolution
 
-Resolution gathers all visible overloads, and chooses the _single_ overload that has the exact parameter types, as the argument types on call-site. In case there is no such function, it is an overload resolution error.
+Resolution gathers all visible overloads, and chooses the _single_ best matching overload. Best match is based on scoring the overloads.
 
-Example:
+Trivial examples that require no scoring system:
 
 ```swift
 func foo(): string = "A";
@@ -74,4 +74,28 @@ func main() {
     println(foo(""));    // C
     println(foo(1, "")); // D
 }
+```
+
+### Scoring
+
+When calling an overloaded function, each overload is assigned a score, which is a vector of numbers, representing how well each argument matches the given parameter signature. 
+
+ * If any of the elements in the score vector is 0, the overload is discarded as non-matching.
+ * A vector of different dimensions is also discarded as non-matching (wrong number of arguments).
+ * An overload `A` is chosen over another, when the score vector of `A` dominates the one of `B`, meaning that each element in the vector `A` paired up with the ones in `B` greater or equal. 
+ For example, `(2, 3, 4)` dominates `(2, 1, 0)`, as `2 >= 2`, `3 >= 1` and `4 >= 0`
+ * Two methods can dominate each-other by having the exact same overload scores.
+ * A final, unambiguous overload is only chosen, when there is an overload with a score that dominates all other scores, but is not dominated by any of the other scores.
+ * If by the end of resolution there are no non-discarded overloads remaining, the call causes a resolution error for no matching overloads found.
+ * If by the end of resolution there are multiple non-discarded overloads remaining, the call causes a resolution error for ambiguous overloading.
+
+The following rules determine for the score for a single argument:
+ * Each argument starts with a unitary score (`1`).
+ * Type-incompatibility sets the score to `0`, discarding the overload.
+ * A generic argument match halves the score.
+
+Examples:
+
+```swift
+// TODO
 ```

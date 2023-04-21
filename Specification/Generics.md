@@ -74,3 +74,20 @@ Where `name1` and `name2` are (potentially qualified) identifiers, and `expr` is
 The above could be interpreted in two different ways:
  * A chained comparison between `name1`, `name2` and `expr`, where `expr` is simply a parenthesized expression.
  * A generic function call of the function `name1` with the generic argument `name2` and call argument `expr`.
+
+### Disambiguation
+
+To syntactically disambiguate the two cases, a set of rules is defined to determine if a `<` starts a generic argument list, or is simply a comparison operator:
+ * If no matching `>` is found after the `<` within the expression, the sequence is deemed to be comparison
+ * If anywhere after `<` and before the matching `>` a syntactic construct is found that is only valid in expression context, the sequence is deemed to be comparison
+ * If anywhere after `<` and before the matching `>` a syntactic construct is found that is only valid in type context, the sequence is deemed to be a generic argument list (NOTE. that there is currently no such syntactic construct)
+ * If anywhere after `<` and before `>` a comma can be found between two top-level constructs, the sequence is deemed to be a generic argument list
+ * In any other case, the sequence stays ambiguous, and the follow-up token decides, how it is interpreted:
+   * A `(`, `.`, `,`, or any other punctuation character that can not continue a comparison expression right after a comparison operator deems the sequence a generic argument list
+   * In any other case, the sequence is considered to be a comparison
+
+If the user wants to disambiguate to the other option than what would be inferred from these rules, they can do so by parenthesizing:
+```swift
+A<B>(C) // Generic call
+(A)<B>(C) // Comparison chain
+```

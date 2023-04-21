@@ -83,7 +83,7 @@ When calling an overloaded function, each overload is assigned a score, which is
  * If any of the elements in the score vector is 0, the overload is discarded as non-matching.
  * A vector of different dimensions is also discarded as non-matching (wrong number of arguments).
  * An overload `A` is chosen over another, when the score vector of `A` dominates the one of `B`, meaning that each element in the vector `A` paired up with the ones in `B` greater or equal. 
- For example, `(2, 3, 4)` dominates `(2, 1, 0)`, as `2 >= 2`, `3 >= 1` and `4 >= 0`
+ For example, `(2, 3, 4)` dominates `(2, 1, 0)`, as `2 >= 2`, `3 >= 1` and `4 >= 0`. There can be cases where neither vectors dominate each other: `(1, 2, 1)` and `(2, 1, 2)` for example.
  * Two methods can dominate each-other by having the exact same overload scores.
  * A final, unambiguous overload is only chosen, when there is an overload with a score that dominates all other scores, but is not dominated by any of the other scores.
  * If by the end of resolution there are no non-discarded overloads remaining, the call causes a resolution error for no matching overloads found.
@@ -95,6 +95,36 @@ The following rules determine for the score for a single argument:
  * A generic argument match halves the score.
 
 Examples:
+
+```swift
+func identity<T>(x: T): T = x; // Overload 1
+func identity(x: int32): int32 = x; // Overload 2
+
+identity(true);
+// # Overload 1
+// - Overload 1 receives the score vector (1)
+// - There is no type incompatibility
+// - The argument matches a generic type, so the score is halved to (0.5)
+//
+// # Overload 2
+// - Overload 2 receives the score vector (1)
+// - The type bool is incompatible with int32, the score is set to (0)
+// - There is a 0 element in the score vector, overload is discarded
+//
+// There is only a single overload remaining, Overload1, that one is chosen
+
+identity(0);
+// # Overload 1
+// - Overload 1 receives the score vector (1)
+// - There is no type incompatibility
+// - The argument matches a generic type, so the score is halved to (0.5)
+//
+// # Overload 2
+// - Overload 2 receives the score vector (1)
+// - There is no type incompatibility, final score is (1)
+//
+// There are two score vectors remaining, Overload 1 with (0.5) and Overload 2 with (1). Since (1) dominates (0.5), Overload 2 is chosen.
+```
 
 ```swift
 // TODO

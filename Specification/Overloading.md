@@ -1,6 +1,6 @@
 # Overloading
 
-_Note: The current specification for overloading is temporary, because the compiler supports a very simple form of overloading. Once we have a more elaborate type-system specification, overloading will be expanded, but the properties described here will not be lost completely._
+_Note: The current specification for overloading is missing a lot of details, like the scoring of subtyping. Once the language supports it, this document will be updated as well._
 
 ## Definition
 

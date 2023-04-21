@@ -92,7 +92,7 @@ When calling an overloaded function, each overload is assigned a score, which is
 The following rules determine for the score for a single argument:
  * Each argument starts with a unitary score (`1`).
  * Type-incompatibility sets the score to `0`, discarding the overload.
- * A generic argument match halves the score.
+ * A generic parameter match halves the score.
 
 Examples:
 
@@ -104,7 +104,7 @@ identity(true);
 // # Overload 1
 // - Overload 1 receives the score vector (1)
 // - There is no type incompatibility
-// - The argument matches a generic type, so the score is halved to (0.5)
+// - The argument matches a generic parameter, so the score is halved to (0.5)
 //
 // # Overload 2
 // - Overload 2 receives the score vector (1)
@@ -117,7 +117,7 @@ identity(0);
 // # Overload 1
 // - Overload 1 receives the score vector (1)
 // - There is no type incompatibility
-// - The argument matches a generic type, so the score is halved to (0.5)
+// - The argument matches a generic parameter, so the score is halved to (0.5)
 //
 // # Overload 2
 // - Overload 2 receives the score vector (1)
@@ -127,5 +127,54 @@ identity(0);
 ```
 
 ```swift
-// TODO
+func foo<T1, T2>(a: T1, b: int32, c: T2) {} // Overload 1
+func foo<T>(a: int32, b: T, c: int32) {} // Overload 2
+
+foo(true, 1, 2);
+// # Overload 1
+// - Overload 1 receives the score vector (1, 1, 1)
+// - There is no type incompatibility
+// - Since the first and last arguments match a generic parameter, their scores are halved, ending up with (0.5, 1, 0.5)
+//
+// # Overload 2
+// - Overload 2 receives the score vector (1, 1, 1)
+// - There is a type mismatch between int32 and bool, setting the score of the first component to 0, discarding this overload
+//
+// There is a single overload remaining, Overload 1 with a score of (0.5, 1, 0.5) is chosen.
+
+foo(1, true, 2);
+// # Overload 1
+// - Overload 1 receives the score vector (1, 1, 1)
+// - There is a type mismatch between int32 and bool, discarding this overload
+//
+// # Overload 2
+// - Overload 2 receives the score vector (1, 1, 1)
+// - There are no type mismatches
+// - The second argument matches a generic type, halving its score (1, 0.5, 1)
+//
+// There is a single overload remaining, Overload 2 with a score of (1, 0.5, 1) is chosen.
+
+foo(1, 2, 3);
+// # Overload 1
+// - Overload 1 receives the score vector (1, 1, 1)
+// - There are no type mismatches
+// - The first and the third arguments match a type parameter, so their scores are halved (0.5, 1, 0.5)
+//
+// # Overload 2
+// - Overload 2 receives the score vector (1, 1, 1)
+// - There are no type mismatches
+// - The second argument matches a generic type, halving its score (1, 0.5, 1)
+//
+// We have Overload 1 with score (0.5, 1, 0.5) and Overload 2 with (1, 0.5, 1). Neither dominate each other, this is an ambiguous call.
+
+foo(true, "hello", 3);
+// # Overload 1
+// - Overload 1 receives the score vector (1, 1, 1)
+// - There is a type mismatch between string and int32, the overload is discarded
+//
+// # Overload 2
+// - Overload 2 receives the score vector (1, 1, 1)
+// - There is a type mismatch between bool and int32, the overload is discarded
+//
+// We have no remaining overloads, error for no matching overload.
 ```

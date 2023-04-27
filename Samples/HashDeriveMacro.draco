@@ -1,4 +1,4 @@
-from System.Collections.Generic import List;
+import System.Collections.Generic;
 
 // Derive macros are a special case of attribute macros. They only append code
 // to the existing target instead of modifying it. This typically allows us to

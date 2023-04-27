@@ -1,5 +1,5 @@
-import { Range, Reverse } from System.Linq.Enumerable;
-import { Write, WriteLine } from System.Console;
+import System.Linq.Enumerable;
+import System.Console;
 
 func main() {
     func capitalize(s: string): string =

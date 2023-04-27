@@ -1,8 +1,8 @@
-import Write from System.Console;
+import System.Console;
 
 func main() {
     var s = #"""
-import Write from System.Console;
+import System.Console;
 
 func main() {
     var s = {0}"""

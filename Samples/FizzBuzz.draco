@@ -1,5 +1,5 @@
-import { Write, WriteLine } from System.Console;
-import Range from System.Linq.Enumerable;
+import System.Console;
+import System.Linq.Enumerable;
 
 func main() {
     for (i in Range(100)) {

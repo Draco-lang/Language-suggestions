@@ -21,7 +21,7 @@ Legend:
      * Proposed in the issue about [record types](https://github.com/Draco-lang/Language-suggestions/issues/41)
    * 🟢 Main Function
       * Proposed in [Main function signatures issue](https://github.com/Draco-lang/Language-suggestions/issues/63)
-      * Specification in [RFC0004](https://github.com/Draco-lang/Language-suggestions/pull/78)
+      * Specification in [RFC0004](https://github.com/Draco-lang/Language-suggestions/pull/78) and [RFC0013](https://github.com/Draco-lang/Language-suggestions/pull/117)
  * 🟡 Control structures
    * 🟢 If-else
      * Proposed in [proposal 0.1](https://github.com/Draco-lang/Language-suggestions/issues/33)
@@ -56,9 +56,10 @@ Legend:
    * Specification for basic operators in [RFC0002](https://github.com/Draco-lang/Language-suggestions/pull/56)
  * 🟡 Exceptions, throwing, catching
    * [Exceptions, try-catch-finally proposal](https://github.com/Draco-lang/Language-suggestions/issues/54)
- * 🟡 Modules
+ * 🟢 Modules
    * [Issue about declarations and definitions](https://github.com/Draco-lang/Language-suggestions/issues/30)
    * The [module system issue](https://github.com/Draco-lang/Language-suggestions/issues/58)
+   * Specification for module system in [RFC0011](https://github.com/Draco-lang/Language-suggestions/pull/112)
 
 ## Type-system
 
@@ -80,10 +81,12 @@ Legend:
    * Overview is in the [proposal 0.2](https://github.com/Draco-lang/Language-suggestions/issues/40)
    * There is the [type inference issue](https://github.com/Draco-lang/Language-suggestions/issues/42)
    * The initial [inference issue](https://github.com/Draco-lang/Language-suggestions/issues/10)
- * 🟡 Overloading
+ * 🟢 Overloading
    * Overview is in the [proposal 0.2](https://github.com/Draco-lang/Language-suggestions/issues/40)
+   * Specification for overloading in [RFC0010](https://github.com/Draco-lang/Language-suggestions/pull/111) and [RFC0012](https://github.com/Draco-lang/Language-suggestions/pull/115)
  * 🟡 Generics
    * For methods, mentioned in [proposal 0.2](https://github.com/Draco-lang/Language-suggestions/issues/40)
+   * For methods specification in [RFC0012](https://github.com/Draco-lang/Language-suggestions/pull/115)
    * For types, nothing is mentioned yet
  * 🟡 Nullability
    * The issue [about erasable nullables](https://github.com/Draco-lang/Language-suggestions/issues/24)

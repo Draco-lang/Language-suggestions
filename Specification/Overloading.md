@@ -80,19 +80,20 @@ func main() {
 
 When calling an overloaded function, each overload is assigned a score, which is a vector of numbers, representing how well each argument matches the given parameter signature. 
 
- * If any of the elements in the score vector is 0, the overload is discarded as non-matching.
- * A vector of different dimensions is also discarded as non-matching (wrong number of arguments).
- * An overload `A` is chosen over another, when the score vector of `A` dominates the one of `B`, meaning that each element in the vector `A` paired up with the ones in `B` greater or equal. 
+ 1) If any of the elements in the score vector is 0, the overload is discarded as non-matching.
+ 2) A vector of different dimensions is also discarded as non-matching (wrong number of arguments). Note that this doesn't apply to varargs, if there is a vararg present at the end of the parameter list and if the vector has more dimensions while [1](Overloading.md#L84) didn't discard the overload already, the overload won't be discarded, because of non-matching number of dimensions.
+ 3) An overload `A` is chosen over another, when the score vector of `A` dominates the one of `B`, meaning that each element in the vector `A` paired up with the ones in `B` greater or equal. 
  For example, `(2, 3, 4)` dominates `(2, 1, 0)`, as `2 >= 2`, `3 >= 1` and `4 >= 0`. There can be cases where neither vectors dominate each other: `(1, 2, 1)` and `(2, 1, 2)` for example.
- * Two methods can dominate each-other by having the exact same overload scores.
- * A final, unambiguous overload is only chosen, when there is an overload with a score that dominates all other scores, but is not dominated by any of the other scores.
- * If by the end of resolution there are no non-discarded overloads remaining, the call causes a resolution error for no matching overloads found.
- * If by the end of resolution there are multiple non-discarded overloads remaining, the call causes a resolution error for ambiguous overloading.
+ 4) Two methods can dominate each-other by having the exact same overload scores.
+ 5) A final, unambiguous overload is only chosen, when there is an overload with a score that dominates all other scores, but is not dominated by any of the other scores.
+ 6) If by the end of resolution there are no non-discarded overloads remaining, the call causes a resolution error for no matching overloads found.
+ 7) If by the end of resolution there are multiple non-discarded overloads remaining, the call causes a resolution error for ambiguous overloading.
 
 The following rules determine for the score for a single argument:
  * Each argument starts with a unitary score (`1`).
  * Type-incompatibility sets the score to `0`, discarding the overload.
  * A generic parameter match halves the score.
+ * A vararg match halves the score.
 
 Examples:
 
@@ -111,7 +112,7 @@ identity(true);
 // - The type bool is incompatible with int32, the score is set to (0)
 // - There is a 0 element in the score vector, overload is discarded
 //
-// There is only a single overload remaining, Overload1, that one is chosen
+// There is only a single overload remaining, Overload 1, that one is chosen
 
 identity(0);
 // # Overload 1
@@ -177,4 +178,36 @@ foo(true, "hello", 3);
 // - There is a type mismatch between bool and int32, the overload is discarded
 //
 // We have no remaining overloads, error for no matching overload.
+```
+
+```swift
+func bar(s: string, x: int32): int32 = x; // Overload 1
+func bar(s: string, ...x: Array<int32>): int32 = x[0]; // Overload 2
+
+bar("Hi", 5);
+// # Overload 1
+// - Overload 1 receives the score vector (1, 1)
+// - There is no type incompatibility, final score is (1, 1)
+//
+// # Overload 2
+// - Overload 2 receives the score vector (1, 1)
+// - There is no type incompatibility
+// - The argument matches a vararg parameter, so the score of the vararg argument is halved to (1, 0.5)
+//
+// There are two score vectors remaining, Overload 1 with (1, 1) and Overload 2 with (1, 0.5). Since (1, 1) dominates (1, 0.5), Overload 1 is chosen.
+
+bar("Hi", 5, 9);
+// # Overload 1
+// - Overload 1 receives the score vector (1, 1, 1)
+// - The number of arguments doesn't match and overload 1 doesn't have a vararg, the overload is discarded.
+//
+// # Overload 2
+// - Overload 2 receives the score vector (1, 1, 1)
+// - There is no type incompatibility
+// - The arguments match a vararg parameter, so the score of the vararg arguments is halved to (1, 0.5, 0.5)
+//
+// There is only a single overload remaining, Overload 2, that one is chosen.
+
+bar("Hi");
+// TODO
 ```

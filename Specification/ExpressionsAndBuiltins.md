@@ -36,6 +36,7 @@ The following primitive types are supported:
  * `float64`
  * `unit`, which is roughly equivalent to the `void` type in C#, but is a true type in the type system, not a marker for no-return (meaning that you can for example use it as a generic parameter, or create a variable of type `unit`)
  * `unreachable`, which is a type of all expressions that take away the execution control from the evaluated expression. This is the type of all unconditional jumps. `unreachable` is always implicitly convertible to other types.
+ * `Array<T>`, which is the basic 1D generic array type. Unlike in C#, arrays in Draco don't have any special declaration syntax. `Array<T>` defines a built-in get-only `Length` property and a built-in indexer that can be used for reading from the array and writing to it.
 
 The naming of these types gets rid of the C heritage, which is very inconsistent among the C family. The slight inconsistency of `byte` and `sbyte` is also removed. The explicit sizes make sure we don't look up docs to know integer sizes.
 

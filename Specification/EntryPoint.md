@@ -7,10 +7,10 @@ This RFC describes the entry point of application-style projects. Note, that the
 The entry point has to be a free-function named `main` (case-sensitive). The allowed parameterization/return types:
  * `func main(): unit`
  * `func main(): int32`, where the returned value is the exit code of the application
+ * `func main(args: Array<string>): unit`, where `args` are the CLI arguments passed to the application
+ * `func main(args: Array<string>): int32`, where the returned value is the exit code of the application and where `args` are the CLI arguments passed to the application
  
  The visibility of the `main` function doesn't matter.
-
-A future RFC will add the possibility to take a string array as a parameter for the CLI arguments. This has to wait until the array type syntax is specified.
 
 ## Placement in the project
 

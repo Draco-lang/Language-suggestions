@@ -11,7 +11,7 @@ This RFC introduces free-functions (functions that are not tied to types), membe
 There will be two syntax variants, the "block syntax":
 
 ```swift
-func function_name(arg1: Type1, arg2: Type2, ...): ReturnType {
+func function_name(arg1: Type1, arg2: Type2): ReturnType {
     // Function body
 }
 ```
@@ -19,10 +19,15 @@ func function_name(arg1: Type1, arg2: Type2, ...): ReturnType {
 And the "inline-expression" syntax (roughly equivalent to arrow-bodied methods in C#):
 
 ```swift
-func function_name(arg1: Type1, arg2: Type2, ...): ReturnType = expression;
+func function_name(arg1: Type1, arg2: Type2): ReturnType = expression;
 ```
 
 The `: ReturnType` part is optional for both syntaxes.
+
+The parameter list can optionally contain a single vararg, such vararg must be placed at the end of the argument list. Varargs have the syntax `...args: Array<T>`.  
+```swift
+func function_name(arg1: Type1, arg2: Type2, ...args: Array<Type3>)
+```
 
 ### Semantics
 
@@ -49,6 +54,26 @@ func main(): int32 {
     func first(a: int32, b: int32): int32 = a;
 
     return first(1, 2); // OK
+}
+```
+
+Varargs are used as regular Array inside the function. Calling a function that contains vararg allows the user to append an arbitrary number of arguments that have the same type as the array of the varargs. 
+```swift
+func foo(arg1: string, ...args: Array<int32>) 
+{
+    var result = 0;
+    var i = 0;
+    while(i < args.Length){
+        result += args[i];
+        i += 1;
+    }
+    return result;
+}
+
+func main(){
+    foo("Hi", 5); // OK
+    foo("Hello", 5, 10, 15, 25); // OK
+    foo(5, 10, 15, 25); // ERROR: all regular arguments still must be provided
 }
 ```
 

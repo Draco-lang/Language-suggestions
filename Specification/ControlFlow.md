@@ -24,7 +24,7 @@ func function_name(arg1: Type1, arg2: Type2): ReturnType = expression;
 
 The `: ReturnType` part is optional for both syntaxes.
 
-The parameter list can optionally contain a single vararg, such vararg must be placed at the end of the argument list. Varargs have the syntax `...args: Array<T>`.  
+The parameter list can optionally contain a variadic argument list as the last parameter, which must have the `...parameterName: CollectionType` declaration syntax. 
 ```swift
 func function_name(arg1: Type1, arg2: Type2, ...args: Array<Type3>)
 ```

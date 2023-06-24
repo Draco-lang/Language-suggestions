@@ -57,7 +57,7 @@ func main(): int32 {
 }
 ```
 
-Varargs are used as regular Array inside the function. Calling a function that contains vararg allows the user to append an arbitrary number of arguments that have the same type as the array of the varargs. 
+Variadic arguments can be used as regular collections inside the function - as their type specified. While currently only variadic argument lists with type `Array<T>` are supported, in the future this can be extended to more collections and even spans. Calling a function that contains a variadic argument list allows the user to append an arbitrary number of arguments that has the same type as the element type of the variadic argument collection. 
 ```swift
 func foo(arg1: string, ...args: Array<int32>) 
 {

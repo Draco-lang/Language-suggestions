@@ -29,6 +29,17 @@ The parameter list can optionally contain a variadic argument list as the last p
 func function_name(arg1: Type1, arg2: Type2, ...args: Array<Type3>)
 ```
 
+If a collection is passed as a variadic argument, the collection won't be passed as individual elements contained in the collection, but as a single element into the collection of variadic arguments. If the given collection should be passed as the elements it contains the splat operator must be used.
+```swift
+func foo(...args: Array<object>) {}
+
+func main(){
+    val arr = arrayOf(1, 2, 3);
+    foo(arr); // The entire array is passed as a single element
+    foo(...arr); // The elements of the array are passed individualy 
+}
+```
+
 ### Semantics
 
 Omitting the return type means that the return type is `unit` (equivalent to `void` in C#).

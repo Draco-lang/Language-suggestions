@@ -36,7 +36,7 @@ func foo(...args: Array<object>) {}
 func main(){
     val arr = arrayOf(1, 2, 3);
     foo(arr); // The entire array is passed as a single element
-    foo(...arr); // The elements of the array are passed individualy 
+    foo(...arr); // The elements of the array are passed individually 
 }
 ```
 

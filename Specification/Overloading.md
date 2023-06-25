@@ -92,9 +92,10 @@ When calling an overloaded function, each overload is assigned a score, which is
 The following rules determine for the score for a single argument:
  * Each argument starts with a unitary score (`1`).
  * Type-incompatibility sets the score to `0`, discarding the overload.
- * If there is a vararg at the end of the parameter list, then for such vararg there is a single dimension allocated in the scoring vector, and a match of the vararg is defined by 0 or more arguments at the correct position matching the type of the vararg.
+ * A single dimension at the end of the scoring vector is allocated in every function in the overload set if at least one function in the overload set contains a variadic parameter and no variadic arguments are supplied.
+ * A match of a variadic parameter is defined by 0 or more arguments at the correct position matching the type of the variadic argument.
  * A generic parameter match halves the score.
- * A vararg match halves the score.
+ * A variadic parameter match halves the score.
 
 Examples:
 
@@ -235,7 +236,7 @@ bar("Hi", true);
 // # Overload 2
 // - Overload 2 receives the score vector (1, 1)
 // - There is no type incompatibility
-// - The last argument matches a generic parameter, its score is halved to 0.5 and it also matches a vararg parameter, so its halved once more resulting in vector (1, 0.25)
+// - The last argument matches a generic parameter, its score is halved to 0.5 and it also matches a vararg parameter, so it's halved once more resulting in vector (1, 0.25)
 //
 // There are two score vectors remaining, Overload 1 with (1, 0.5) and Overload 2 with (1, 0.25). Since (1, 0.5) dominates (1, 0.25), Overload 1 is chosen.
 
@@ -247,7 +248,7 @@ bar("Hi", 5, 9);
 // # Overload 2
 // - Overload 2 receives the score vector (1, 1)
 // - There is no type incompatibility
-// - The last argument matches a generic parameter, its score is halved to 0.5 and it also matches a vararg parameter, so its halved once more resulting in vector (1, 0.25)
+// - The last argument matches a generic parameter, its score is halved to 0.5 and it also matches a vararg parameter, so it's halved once more resulting in vector (1, 0.25)
 //
 // There is only a single overload remaining, Overload 2, that one is chosen.
 ```

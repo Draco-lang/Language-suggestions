@@ -29,7 +29,7 @@ The parameter list can optionally contain a variadic argument list as the last p
 func function_name(arg1: Type1, arg2: Type2, ...args: Array<Type3>)
 ```
 
-If a collection is passed as a variadic argument, the collection won't be passed as individual elements contained in the collection, but as a single element into the collection of variadic arguments. If the given collection should be passed as the elements it contains the splat operator must be used.
+If a collection is passed as a variadic argument, the collection won't be passed as individual elements - like in C# -, but as a single element instead. If the given collection should be passed as the individual elements it contains, the splat operator must be used.
 ```swift
 func foo(...args: Array<object>) {}
 

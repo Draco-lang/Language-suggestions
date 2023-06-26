@@ -84,6 +84,7 @@ func foo(arg1: string, ...args: Array<int32>)
 func main(){
     foo("Hi", 5); // OK
     foo("Hello", 5, 10, 15, 25); // OK
+    foo("Hello"); // OK
     foo(5, 10, 15, 25); // ERROR: all regular arguments still must be provided
 }
 ```

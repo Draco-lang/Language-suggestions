@@ -218,7 +218,7 @@ bar("Hi");
 // # Overload 2
 // - Overload 2 receives the score vector (1, 1)
 // - There is no type incompatibility
-// - The last(non-existing) argument matches a vararg parameter (0 arguments can be passed to the vararg parameter), so the score of the vararg argument is halved to (1, 0.5)
+// - The last (non-existing) argument matches a vararg parameter (0 arguments can be passed to the vararg parameter), so the score of the vararg argument is halved to (1, 0.5)
 //
 // There is only a single overload remaining, Overload 2, that one is chosen.
 ```

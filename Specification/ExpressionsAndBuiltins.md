@@ -316,7 +316,7 @@ The following is the precedence table for the supported operators (highest prece
 | **Operator** | **Description** | **Associativity** | **Notes** |
 |---|---|:-:|---|
 | expr(args) <br/> expr[indices] <br/> expr.member | Function call <br/> Indexing <br/> Member access | - |  |
-| +expr <br/> -expr <br/> ...array | Positive <br/> Negative <br/> Splat operator |  - | The splat operator allows passing collections (currently only arrays) as individual elements into a variadic argument list. |
+| +expr <br/> -expr <br/> ...array | Positive <br/> Negative <br/> Spread operator |  - | The spread operator allows passing collections (currently only arrays) as individual elements into a variadic argument list. |
 | expr * expr <br/> expr / expr <br/> expr mod expr <br/> expr rem expr | Multiplication <br/> Division <br/> Modulo <br/> Remainder | Left-to-right | Hopefully the keywords instead of the made up % helps disambiguate and avoid bikeshedding syntax arguments in the future. |
 | expr + expr <br/> expr - expr | Addition <br/> Subtraction | Left-to-right |  |
 | expr < expr <br/> expr > expr <br/> expr <= expr <br/> expr >= expr <br/> expr == expr <br/> expr != expr | Less-than<br/> Greater-than<br/> Less or equal<br/> Greater or equal<br/> Equals<br/> Not equals | Left-to-right | These operators can be chained arbitrarily, like in Python. <br/> `x < y >= z` is equivalent to `x < y and y >= z`, all expressions evaluated at most once, short-circuiting on the first falsy value. <br/> The elements in the chain can not be parenthesized, `(x < y) == (y < x)` is not equivalent to `x < y == y < x`! |

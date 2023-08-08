@@ -36,6 +36,7 @@ The following primitive types are supported:
  * `float64`
  * `unit`, which is roughly equivalent to the `void` type in C#, but is a true type in the type system, not a marker for no-return (meaning that you can for example use it as a generic parameter, or create a variable of type `unit`)
  * `unreachable`, which is a type of all expressions that take away the execution control from the evaluated expression. This is the type of all unconditional jumps. `unreachable` is always implicitly convertible to other types.
+ * `Array<T>`, which is the basic 1D generic array type. Unlike in C#, arrays in Draco don't have any special declaration syntax. `Array<T>` defines a built-in get-only `Length` property and a built-in indexer that can be used for reading from the array and writing to it.
 
 The naming of these types gets rid of the C heritage, which is very inconsistent among the C family. The slight inconsistency of `byte` and `sbyte` is also removed. The explicit sizes make sure we don't look up docs to know integer sizes.
 
@@ -314,8 +315,8 @@ The following is the precedence table for the supported operators (highest prece
 
 | **Operator** | **Description** | **Associativity** | **Notes** |
 |---|---|:-:|---|
-| expr(args...) <br/> expr[indices...] <br/> expr.member | Function call <br/> Indexing <br/> Member access | - |  |
-| +expr <br/> -expr | Positive <br/> Negative |  - |  |
+| expr(args) <br/> expr[indices] <br/> expr.member | Function call <br/> Indexing <br/> Member access | - |  |
+| +expr <br/> -expr <br/> ...array | Positive <br/> Negative <br/> Spread operator |  - | The spread operator allows passing collections (currently only arrays) as individual elements into a variadic argument list. |
 | expr * expr <br/> expr / expr <br/> expr mod expr <br/> expr rem expr | Multiplication <br/> Division <br/> Modulo <br/> Remainder | Left-to-right | Hopefully the keywords instead of the made up % helps disambiguate and avoid bikeshedding syntax arguments in the future. |
 | expr + expr <br/> expr - expr | Addition <br/> Subtraction | Left-to-right |  |
 | expr < expr <br/> expr > expr <br/> expr <= expr <br/> expr >= expr <br/> expr == expr <br/> expr != expr | Less-than<br/> Greater-than<br/> Less or equal<br/> Greater or equal<br/> Equals<br/> Not equals | Left-to-right | These operators can be chained arbitrarily, like in Python. <br/> `x < y >= z` is equivalent to `x < y and y >= z`, all expressions evaluated at most once, short-circuiting on the first falsy value. <br/> The elements in the chain can not be parenthesized, `(x < y) == (y < x)` is not equivalent to `x < y == y < x`! |

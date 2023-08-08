@@ -92,7 +92,10 @@ When calling an overloaded function, each overload is assigned a score, which is
 The following rules determine for the score for a single argument:
  * Each argument starts with a unitary score (`1`).
  * Type-incompatibility sets the score to `0`, discarding the overload.
+ * A single dimension at the end of the scoring vector is allocated in every function in the overload set if at least one function in the overload set contains a variadic parameter and no variadic arguments are supplied.
+ * A match of a variadic parameter is defined by 0 or more arguments at the correct position matching the type of the variadic argument.
  * A generic parameter match halves the score.
+ * A variadic parameter match halves the score.
 
 Examples:
 
@@ -111,7 +114,7 @@ identity(true);
 // - The type bool is incompatible with int32, the score is set to (0)
 // - There is a 0 element in the score vector, overload is discarded
 //
-// There is only a single overload remaining, Overload1, that one is chosen
+// There is only a single overload remaining, Overload 1, that one is chosen
 
 identity(0);
 // # Overload 1
@@ -177,4 +180,75 @@ foo(true, "hello", 3);
 // - There is a type mismatch between bool and int32, the overload is discarded
 //
 // We have no remaining overloads, error for no matching overload.
+```
+
+```swift
+func bar(s: string, x: int32): int32 = x; // Overload 1
+func bar(s: string, ...x: Array<int32>): int32 = x[0]; // Overload 2
+
+bar("Hi", 5);
+// # Overload 1
+// - Overload 1 receives the score vector (1, 1)
+// - There is no type incompatibility, final score is (1, 1)
+//
+// # Overload 2
+// - Overload 2 receives the score vector (1, 1)
+// - There is no type incompatibility
+// - The last argument matches a vararg parameter, so the score of the vararg argument is halved to (1, 0.5)
+//
+// There are two score vectors remaining, Overload 1 with (1, 1) and Overload 2 with (1, 0.5). Since (1, 1) dominates (1, 0.5), Overload 1 is chosen.
+
+bar("Hi", 5, 9);
+// # Overload 1
+// - Overload 1 receives the score vector (1, 1, 1)
+// - The number of arguments doesn't match, the overload is discarded.
+//
+// # Overload 2
+// - Overload 2 receives the score vector (1, 1)
+// - There is no type incompatibility
+// - The last arguments match a vararg parameter, so the score of the vararg argument is halved to (1, 0.5)
+//
+// There is only a single overload remaining, Overload 2, that one is chosen.
+
+bar("Hi");
+// # Overload 1
+// - Overload 1 receives the score vector (1)
+// - The number of arguments doesn't match and overload 1 doesn't have a vararg, the overload is discarded.
+//
+// # Overload 2
+// - Overload 2 receives the score vector (1, 1)
+// - There is no type incompatibility
+// - The last (non-existing) argument matches a vararg parameter (0 arguments can be passed to the vararg parameter), so the score of the vararg argument is halved to (1, 0.5)
+//
+// There is only a single overload remaining, Overload 2, that one is chosen.
+```
+
+```swift
+func bar<T>(s: string, x: T): T = x; // Overload 1
+func bar<T>(s: string, ...x: Array<T>): T = x[0]; // Overload 2
+
+bar("Hi", true);
+// # Overload 1
+// - Overload 1 receives the score vector (1, 1)
+// - There is no type incompatibility
+// - The last argument matches a generic parameter, its score is halved resulting in vector (1, 0.5)
+//
+// # Overload 2
+// - Overload 2 receives the score vector (1, 1)
+// - There is no type incompatibility
+// - The last argument matches a generic parameter, its score is halved to 0.5 and it also matches a vararg parameter, so it's halved once more resulting in vector (1, 0.25)
+//
+// There are two score vectors remaining, Overload 1 with (1, 0.5) and Overload 2 with (1, 0.25). Since (1, 0.5) dominates (1, 0.25), Overload 1 is chosen.
+
+bar("Hi", 5, 9);
+// # Overload 1
+// - Overload 1 receives the score vector (1, 1, 1)
+// - The number of arguments doesn't match, the overload is discarded.
+//
+// # Overload 2
+// - Overload 2 receives the score vector (1, 1)
+// - There is no type incompatibility
+// - The last argument matches a generic parameter, its score is halved to 0.5 and it also matches a vararg parameter, so it's halved once more resulting in vector (1, 0.25)
+//
+// There is only a single overload remaining, Overload 2, that one is chosen.
 ```

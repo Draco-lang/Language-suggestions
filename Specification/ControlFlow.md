@@ -11,7 +11,7 @@ This RFC introduces free-functions (functions that are not tied to types), membe
 There will be two syntax variants, the "block syntax":
 
 ```swift
-func function_name(arg1: Type1, arg2: Type2, ...): ReturnType {
+func function_name(arg1: Type1, arg2: Type2): ReturnType {
     // Function body
 }
 ```
@@ -19,10 +19,26 @@ func function_name(arg1: Type1, arg2: Type2, ...): ReturnType {
 And the "inline-expression" syntax (roughly equivalent to arrow-bodied methods in C#):
 
 ```swift
-func function_name(arg1: Type1, arg2: Type2, ...): ReturnType = expression;
+func function_name(arg1: Type1, arg2: Type2): ReturnType = expression;
 ```
 
 The `: ReturnType` part is optional for both syntaxes.
+
+The parameter list can optionally contain a variadic argument list as the last parameter, which must have the `...parameterName: CollectionType` declaration syntax. 
+```swift
+func function_name(arg1: Type1, arg2: Type2, ...args: Array<Type3>)
+```
+
+If a collection is passed as a variadic argument, the collection won't be passed as individual elements - like in C# -, but as a single element instead. If the given collection should be passed as the individual elements it contains, the spread operator must be used.
+```swift
+func foo(...args: Array<object>) {}
+
+func main(){
+    val arr = arrayOf(1, 2, 3);
+    foo(arr); // The entire array is passed as a single element
+    foo(...arr); // The elements of the array are passed individually 
+}
+```
 
 ### Semantics
 
@@ -49,6 +65,27 @@ func main(): int32 {
     func first(a: int32, b: int32): int32 = a;
 
     return first(1, 2); // OK
+}
+```
+
+Variadic arguments can be used as regular collections inside the function - as their type specified. While currently only variadic argument lists with type `Array<T>` are supported, in the future this can be extended to more collections and even spans. Calling a function that contains a variadic argument list allows the user to append an arbitrary number of arguments that has the same type as the element type of the variadic argument collection. 
+```swift
+func foo(arg1: string, ...args: Array<int32>) 
+{
+    var result = 0;
+    var i = 0;
+    while(i < args.Length){
+        result += args[i];
+        i += 1;
+    }
+    return result;
+}
+
+func main(){
+    foo("Hi", 5); // OK
+    foo("Hello", 5, 10, 15, 25); // OK
+    foo("Hello"); // OK
+    foo(5, 10, 15, 25); // ERROR: all regular arguments still must be provided
 }
 ```
 

@@ -230,3 +230,13 @@ implement Foo {
 ## Associated behavior
 
 TODO
+
+## Not yet considered
+
+A section to list what this proposal hasn't considered yet.
+
+TODO
+
+## Elaborate examples
+
+TODO

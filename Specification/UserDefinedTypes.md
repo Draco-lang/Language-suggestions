@@ -203,9 +203,29 @@ enum Expr {
 
 The members within the enum declaration directly follow the same logic as classes, only instance state is declared.
 
+Behavior can be associated the same way, as for classes:
+
+```cs
+implement Expr {
+    // ...
+}
+```
+
+Value-type enums can be declared the same way as classes, by prefixing with `value`:
+
+```cs
+value enum Foo { ... }
+```
+
 ## Static state
 
-TODO
+Non-member, static data can be associated to types in the `implement` blocks. For example, adding a static instance counter field to the type `Foo`:
+
+```cs
+implement Foo {
+    field var InstanceCount: int32;
+}
+```
 
 ## Associated behavior
 

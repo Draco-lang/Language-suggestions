@@ -2,6 +2,10 @@
 
 This document attempts to describe the datatypes that can be declared in Draco. We will attempt to summarize all "class-related features" of C#, our equivalents and how we would be able to interop with each of them, given that C# interop is an important aspect for us.
 
+Prior issues:
+ * [Traits](https://github.com/Draco-lang/Language-suggestions/issues/52)
+ * [User-defined types](https://github.com/Draco-lang/Language-suggestions/issues/122)
+
 ## C# features to cover
 
 Here is a loose list of C# features we are trying to cover that is needed for interop, or we intend to carry on because of its value regardless of the necessity (or I just mentioned for consideration). If there is anything missing, please notify under this proposal.
@@ -57,3 +61,35 @@ There are certain things we can already sort of decide based on our prior philos
  * Because we already have `var` and `val` differentiated, this is a good basis for when we want to consider field modifiers like `readonly`, or get-only/get-set auto-properties.
  * We are intending to make types extendable externally (note, this is not the inheritance kind of extension), similarly to C# extension methods or Rust `impl` blocks. This likely makes the `partial` modifier obsolete. Note, that the feature will likely introduce additional design considerations when considering this extension mechanism across assemblies.
  * C# enums can be shoved into a more general discriminated-union design.
+
+## Interfaces
+
+I believe one of the simplest places to tackle is interfaces, since there has been a lot of implications about taking heavy inspiration from Rust traits. For now I'd like to propose to leave out associated types intentionally until we have generic constraints fleshed out. That leaves the following features (straight from the traits issue):
+ * Nonstatic methods/properties
+ * Static methods/properties (also known as `static abstract`s in C#)
+ * Default method/property implementations
+ * Reference for the implementation type
+
+An example for all features:
+
+```rs
+trait IAnimal {
+    // TODO: Static property
+
+    // Static method
+    // Reference to the implementation type through This
+    func make(name: string): This;
+
+    // TODO: Nonstatic property
+
+    // Nonstatic method
+    func moveTo(this, x: int32, y: int32): bool;
+
+    // Defaulted function
+    func cloneTo(this, x: int32, y: int32): This {
+        val clone = This.make("my clone");
+        clone.moveTo(x, y);
+        return clone;
+    }
+}
+```

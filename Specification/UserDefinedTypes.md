@@ -74,13 +74,15 @@ An example for all features:
 
 ```rs
 trait IAnimal {
-    // TODO: Static property
+    // Static property
+    prop Species(): string { get; }
 
     // Static method
     // Reference to the implementation type through This
     func make(name: string): This;
 
-    // TODO: Nonstatic property
+    // Nonstatic property
+    prop Age(this): int32 { get; set; }
 
     // Nonstatic method
     func moveTo(this, x: int32, y: int32): bool;
@@ -106,11 +108,18 @@ Implementing a trait happens in a separate syntactical construct from the type. 
 
 ```rs
 implement IAnimal for Dog {
+    prop Species(): string = "Dog";
+
     // This and Dog are interchangable once in the implementor type, This is merely an alias for Dog here
     func make(name: string): Dog = Dog(name, "Husky");
 
     // We could have written
     // func make(name: string): This = This(name, "Husky");
+
+    prop Age(this): int32 {
+        get = (DateTime.Now - this.birthDate).Years;
+        set { this.birthDate = DateTime.Now - DateTime(value, 0, 0)}
+    }
 
     func moveTo(this, x: int32, y: int32): bool {
         if (this.isObstructedAt(x, y)) return false;
@@ -201,7 +210,7 @@ enum Expr {
 }
 ```
 
-The members within the enum declaration directly follow the same logic as classes, only instance state is declared.
+The members within the enum declaration directly follow the same logic as classes, only instance state is declared. Note, that this declaration is a **reference type**, unlike enums in C# by default (see the C# equivalent later).
 
 Behavior can be associated the same way, as for classes:
 
@@ -227,7 +236,62 @@ implement Foo {
 }
 ```
 
+### Variant tag, backing type
+
+The "tag-value" (the field marking what number is assocaiated with the alternative) can be specified with `= constant`, like in C#:
+
+```rs
+enum Expr {
+    Void = 1;
+    Add(val Left: Expr, val Right: Expr) = 2;
+    Call {
+        field val method: string;
+        field val args: List<Expr>;
+    } = 3;
+}
+```
+
+The backing field name and type can be changed in the declaration itself:
+
+```rs
+enum Expr(Tag: int16) {
+    // ...
+}
+```
+
+### C# compatibility
+
+C# enums can be declared by defining a `value enum`, where no members are compound types. Example:
+
+```rs
+value enum Color(Value: int8) {
+    Red = 1;
+    Green = 2;
+    Blue = 3;
+}
+```
+
+The equivalent C# would be:
+
+```cs
+enum Color : int8 {
+    Red = 1,
+    Green = 2,
+    Blue = 3,
+}
+```
+
 ## Properties
+
+Auto-properties take two forms, `var Name: Type` for get-set, and `val Name: Type` for get-only properties:
+
+```cs
+var Foo: int32;
+// Equivalent C#: int Foo { get; set; }
+
+val Bar: int32;
+// Equivalent C#: int Bar { get; }
+```
 
 Static properties take the form (within `implement` blocks):
 
@@ -254,7 +318,7 @@ Nonstatic properties only differ in receiving the `this` parameter in the proper
 ```cs
 prop Age(this): int32 {
     get = (DateTime.Now - this.birthDate).Years;
-    set { TODO }
+    set { this.birthDate = DateTime.Now - DateTime(value, 0, 0)}
 }
 ```
 
@@ -267,11 +331,43 @@ prop Age(this): int32 = (DateTime.Now - this.birthDate).Years;
 // int Age => (DateTime.Now - this.birthDate).Years;
 ```
 
+In interfaces, properties often need to annotate what accessors they have without computing anything, for this the `get`/`set` accessors are not followed by expression or block, but only by `;`:
+```cs
+prop Foo(): int32 { get; set; }
+prop Bar(this): int32 { get; }
+```
+
 ## Not yet considered
 
-A section to list what this proposal hasn't considered yet.
+A section to list what this proposal hasn't considered yet (copied from the section listing the C# elements).
 
-TODO
+Data types:
+ * `record class` declarations
+ * `record struct` declarations
+
+Data type modifiers:
+ * `sealed` class modifier
+ * `abstract` class modifier
+ * `readonly` struct modifier
+ * `ref` struct modifier
+ * class inheritance
+ * implicit interface implementation
+ * explicit interface implementation
+
+Members:
+ * constructors
+ * indexers
+ * arithmetic/comparison operators
+ * implicit conversion
+ * explicit conversion
+
+Member modifiers:
+ * `required` property modifier
+ * `abstract` property/method modifier
+ * `abstract override` property/method modifier
+ * `virtual` property/method modifier
+ * `override` property/method modifier
+ * covariant return type for methods/properties
 
 ## Elaborate examples
 

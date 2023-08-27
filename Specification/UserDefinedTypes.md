@@ -120,3 +120,13 @@ implement IAnimal for Dog {
     }
 }
 ```
+
+> Note, that `this` does not need a `var` or `val` modifier. Just like any other parameter, it's implicitly a `val`.
+
+## Product types (classes, records, structs)
+
+TODO
+
+## Sum types (DUs, enums)
+
+TODO

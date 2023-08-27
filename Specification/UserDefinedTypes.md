@@ -181,7 +181,25 @@ value class Color {
 
 ## Sum types (DUs, enums)
 
-TODO
+Discriminated unions take heavy inspiration from Rust enums. In general, they take the following shape:
+
+```rs
+enum Expr {
+    // Stateless field, like a C# enum member
+    Void;
+
+    // Tuple-like variant
+    Add(val Left: Expr, val Right: Expr);
+
+    // Class-like variant
+    Call {
+        field val method: string;
+        field val args: List<Expr>;
+    };
+}
+```
+
+The members within the enum declaration directly follow the same logic as classes, only instance state is declared.
 
 ## Static state
 

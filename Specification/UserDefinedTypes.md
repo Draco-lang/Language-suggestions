@@ -125,8 +125,45 @@ implement IAnimal for Dog {
 
 ## Product types (classes, records, structs)
 
-TODO
+The usual, general-purpose class declaration is provided under the `class` keyword. The only syntactic change is that the class is only allowed to declare **instance state** in its declaration, which means auto-properties (properties automatically backed by fields) and fields. Example:
+
+```cs
+class Foo {
+    // Gettable and settable auto-prop
+    // Equivalent C#: int X { get; set; }
+    var X: int32;
+
+    // Get-only auto-prop
+    // Equivalent C#: int Y { get; }
+    val Y: string;
+
+    // Mutable field
+    // Equivalent C#: int Z;
+    field var Z: int32;
+
+    // Readonly field
+    // Equivalent C#: readonly int W;
+    field val W: string;
+}
+```
+
+Some things to note:
+ * Within the class declaration, there can be only **instance, nonstatic state** provided, no static state is declared here.
+ * Fields got a keyword, since properties are generally not a mistake to default to, and are more resilient to API changes.
+ * Behavior and associated static data can be found in separate implementation blocks, similarly how one would implement a trait.
+
+Associating behavior to this class would look like so:
+
+```swift
+implement Foo {
+    // Pretty-printer for instances
+    func print(this) =
+        Console.WriteLine("Foo(X = \{this.X}; Y = \{this.Y}; Z = \{this.Z}; W = \{this.W})");
+}
+```
 
 ## Sum types (DUs, enums)
 
 TODO
+
+## Associated behavior and state associated to type (static state)

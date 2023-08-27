@@ -93,3 +93,30 @@ trait IAnimal {
     }
 }
 ```
+
+Important details to note:
+ * `This` is an alias within the trait to reference the type implementing this trait
+ * Static members do not take an explicit `this` parameter
+ * Nonstatic members take an explicit `this` parameter, implicitly typed `This`
+ * Static members are accessed through `This`, though this could be made implicit
+ * Nonstatic members are accessed through `this`, no implicit context like in C# or Java
+ * Defaulted members can be overriden and are not hidden in the implementation type like in C#
+
+Implementing a trait happens in a separate syntactical construct from the type. It does not even have to be in the same assembly, but either the trait, or the implementing type has to be defined in the assembly providing the implementation. Example:
+
+```rs
+implement IAnimal for Dog {
+    // This and Dog are interchangable once in the implementor type, This is merely an alias for Dog here
+    func make(name: string): Dog = Dog(name, "Husky");
+
+    // We could have written
+    // func make(name: string): This = This(name, "Husky");
+
+    func moveTo(this, x: int32, y: int32): bool {
+        if (this.isObstructedAt(x, y)) return false;
+        this.x = x;
+        this.y = y;
+        return true;
+    }
+}
+```

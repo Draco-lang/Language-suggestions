@@ -283,6 +283,8 @@ enum Color : int8 {
 
 ## Properties
 
+### Auto-properties
+
 Auto-properties take two forms, `var Name: Type` for get-set, and `val Name: Type` for get-only properties:
 
 ```cs
@@ -292,6 +294,8 @@ var Foo: int32;
 val Bar: int32;
 // Equivalent C#: int Bar { get; }
 ```
+
+### Custom properties
 
 Static properties take the form (within `implement` blocks):
 

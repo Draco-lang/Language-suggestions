@@ -162,8 +162,31 @@ implement Foo {
 }
 ```
 
+For value-types (structs), the class can be prefixed with the `value` keyword:
+
+```cs
+value class Color {
+    field val R: uint8;
+    field val G: uint8;
+    field val B: uint8;
+}
+
+// Equivalent:
+// struct Color {
+//     byte R;
+//     byte G;
+//     byte B;
+// }
+```
+
 ## Sum types (DUs, enums)
 
 TODO
 
-## Associated behavior and state associated to type (static state)
+## Static state
+
+TODO
+
+## Associated behavior
+
+TODO

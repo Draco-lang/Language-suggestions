@@ -179,6 +179,8 @@ value class Color {
 // }
 ```
 
+TODO: Tuple-like classes
+
 ## Sum types (DUs, enums)
 
 Discriminated unions take heavy inspiration from Rust enums. In general, they take the following shape:

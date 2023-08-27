@@ -227,9 +227,45 @@ implement Foo {
 }
 ```
 
-## Associated behavior
+## Properties
 
-TODO
+Static properties take the form (within `implement` blocks):
+
+```cs
+prop Foo(): int32 {
+    get { ... }
+    set { ... }
+}
+```
+
+The getter needs to return `int32`, and the setter implicitly receives a `value: int32` parameter, similarly to C#.
+
+The usual `= expr` sugar is available for both the getter and setter blocks:
+
+```cs
+prop Foo(): int32 {
+    get = ...;
+    set = ...;
+}
+```
+
+Nonstatic properties only differ in receiving the `this` parameter in the property signature:
+
+```cs
+prop Age(this): int32 {
+    get = (DateTime.Now - this.birthDate).Years;
+    set { TODO }
+}
+```
+
+Computed get-only properties have sugar in the following form:
+
+```cs
+prop Age(this): int32 = (DateTime.Now - this.birthDate).Years;
+
+// Equivalent C#:
+// int Age => (DateTime.Now - this.birthDate).Years;
+```
 
 ## Not yet considered
 

@@ -190,6 +190,25 @@ value class Color {
 
 TODO: Tuple-like classes
 
+### Constructors
+
+We'd like to push logic out from constructors. If there's significant logic involved with a types' construction, one should write a factory function. The construction logic itself should be fairly minimal. Initializer lists sort of facilitate a minimalistic construction, where the sole logic involved is copying some consistent initial state into the new instances' members. For example, constructing the above `Foo` type would look like so:
+
+```cs
+val f = Foo {
+    X = 0;
+    Y = "foo";
+    Z = 1;
+    W = "bar";
+};
+```
+
+TODO: Visibility of this kind of construction?
+
+### Inheritance
+
+TODO: Inheritance syntax, how to invoke base ctor
+
 ## Sum types (DUs, enums)
 
 Discriminated unions take heavy inspiration from Rust enums. In general, they take the following shape:

@@ -190,6 +190,16 @@ value class Color {
 
 TODO: Tuple-like classes
 
+### Inheritance
+
+While inheritance is heavily discouraged, it is unavoidable because of interop with the existing ecosystem. The proposed syntax for inheritance looks exactly like how it looks in C#:
+
+```cs
+class Derived : Base { ... }
+```
+
+While this might seem like a weird divergence from the commitment to the external trait implementation style, it is necessary. There can only be a singole base class, and the base has to be known in the assembly declaring the type.
+
 ### Constructors
 
 We'd like to push logic out from constructors. If there's significant logic involved with a types' construction, one should write a factory function. The construction logic itself should be fairly minimal. Initializer lists sort of facilitate a minimalistic construction, where the sole logic involved is copying some consistent initial state into the new instances' members. For example, constructing the above `Foo` type would look like so:
@@ -205,9 +215,9 @@ val f = Foo {
 
 TODO: Visibility of this kind of construction?
 
-### Inheritance
+### Calling base constructors
 
-TODO: Inheritance syntax, how to invoke base ctor
+TODO
 
 ## Sum types (DUs, enums)
 
@@ -245,16 +255,6 @@ Value-type enums can be declared the same way as classes, by prefixing with `val
 value enum Foo { ... }
 ```
 
-## Static state
-
-Non-member, static data can be associated to types in the `implement` blocks. For example, adding a static instance counter field to the type `Foo`:
-
-```cs
-implement Foo {
-    field var InstanceCount: int32;
-}
-```
-
 ### Variant tag, backing type
 
 The "tag-value" (the field marking what number is assocaiated with the alternative) can be specified with `= constant`, like in C#:
@@ -270,10 +270,10 @@ enum Expr {
 }
 ```
 
-The backing field name and type can be changed in the declaration itself:
+The backing tag field type can be changed in the declaration itself using the inheritance syntax:
 
 ```rs
-enum Expr(Tag: int16) {
+enum Expr : int16 {
     // ...
 }
 ```
@@ -283,7 +283,7 @@ enum Expr(Tag: int16) {
 C# enums can be declared by defining a `value enum`, where no members are compound types. Example:
 
 ```rs
-value enum Color(Value: int8) {
+value enum Color : int8 {
     Red = 1;
     Green = 2;
     Blue = 3;
@@ -358,6 +358,16 @@ In interfaces, properties often need to annotate what accessors they have withou
 ```cs
 prop Foo(): int32 { get; set; }
 prop Bar(this): int32 { get; }
+```
+
+## Static state
+
+Non-member, static data can be associated to types in the `implement` blocks. For example, adding a static instance counter field to the type `Foo`:
+
+```cs
+implement Foo {
+    field var InstanceCount: int32;
+}
 ```
 
 ## Not yet considered

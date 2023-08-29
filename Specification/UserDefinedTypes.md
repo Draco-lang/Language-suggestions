@@ -217,7 +217,25 @@ TODO: Visibility of this kind of construction?
 
 ### Calling base constructors
 
-TODO
+Calling the base class constructor can be done by assigning the special member `base` in the initializer list with one of the base constructor methods:
+
+```cs
+val d = Derived {
+    base = Base(arg1, arg2, ...);
+    // other member init...
+};
+```
+
+TODO: This implies, that one could write something like:
+
+```cs
+val d = Derived {
+    base = if (x < y) Base(arg1, arg2, ...) else Base(argx, argy, ...);
+    // other member init...
+};
+```
+
+Which might be something we don't want to, or simply can't support.
 
 ## Sum types (DUs, enums)
 
@@ -383,12 +401,10 @@ Data type modifiers:
  * `abstract` class modifier
  * `readonly` struct modifier
  * `ref` struct modifier
- * class inheritance
  * implicit interface implementation
  * explicit interface implementation
 
 Members:
- * constructors
  * indexers
  * arithmetic/comparison operators
  * implicit conversion

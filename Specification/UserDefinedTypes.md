@@ -198,7 +198,20 @@ While inheritance is heavily discouraged, it is unavoidable because of interop w
 class Derived : Base { ... }
 ```
 
-While this might seem like a weird divergence from the commitment to the external trait implementation style, it is necessary. There can only be a singole base class, and the base has to be known in the assembly declaring the type.
+While this might seem like a weird divergence from the commitment to the external trait implementation style, it is necessary. There can only be a single base class, and the base has to be known in the assembly declaring the type.
+
+**Draco classes are `sealed` by default**, unlike C# classes, which are open to inheritance by default. Draco classes can be made open for inheritance using the `open` modifier:
+
+```cs
+class ClosedBase {}
+open class OpenBase { }
+
+// ERROR
+// class Derived1 : ClosedBase {}
+
+// Ok
+class Derived2 : OpenBase {}
+```
 
 ### Constructors
 

@@ -410,7 +410,6 @@ Data types:
  * `record struct` declarations
 
 Data type modifiers:
- * `sealed` class modifier
  * `abstract` class modifier
  * `readonly` struct modifier
  * `ref` struct modifier

@@ -132,6 +132,29 @@ implement IAnimal for Dog {
 
 > Note, that `this` does not need a `var` or `val` modifier. Just like any other parameter, it's implicitly a `val`.
 
+### Implicit vs explicit implementations, defaulting
+
+C# allows for implementing methods of a trait implicitly or exmplicitly. Furthermore, default members are implemented explicitly, making them painful to utilize well. Note that there is a reason C# does this, to avoid the diamond-inheritance problem:
+
+```cs
+interface I1
+{
+    public void Foo() => Console.WriteLine("Hello!");
+}
+interface I2
+{
+    public void Foo() => Console.WriteLine("Bye!");
+}
+struct T : I1, I2 {}
+
+class Program
+{
+    static void Main(string[] args) => default(T).Foo(); // Ambiguous
+}
+```
+
+In our case, we can use the same disambiguation that Rust uses. Since each trait implementation is explicit to its own block, we can disambiguate by calling the defaulted/ambiguous member as a static method of the trait: `I1.Foo(default(T))` or `I2.Foo(default(T))`.
+
 ## Product types (classes, records, structs)
 
 The usual, general-purpose class declaration is provided under the `class` keyword. The only syntactic change is that the class is only allowed to declare **instance state** in its declaration, which means auto-properties (properties automatically backed by fields) and fields. Example:

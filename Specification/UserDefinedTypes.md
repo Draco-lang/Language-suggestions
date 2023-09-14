@@ -424,6 +424,30 @@ implement Foo {
 }
 ```
 
+## Operators
+
+Since .NET 7, a bunch of interfaces have been introduced to model operators inside [System.Numerics](https://learn.microsoft.com/en-us/dotnet/api/system.numerics?view=net-7.0). I'd like to propose that instead of custom syntax, we'd treat operators as trait implementations:
+ * `operator +`: `IAdditionOperators`
+ * `operator -`: `ISubrtactionOperators`
+ * ...
+
+An example:
+
+```swift
+struct Vector2 {
+    var X: int32;
+    var Y: int32;
+}
+
+// NOTE: We could tackle eliminating CRTP implicitly since we have This type anyway
+implement IAdditionOperators<Vector2, Vector2> for Vector2 {
+    func Addition(left: This, rigt: This): This = Vector2 {
+        X = left.X + right.X;
+        Y = left.Y + right.Y;
+    };
+}
+```
+
 ## Not yet considered
 
 A section to list what this proposal hasn't considered yet (copied from the section listing the C# elements).

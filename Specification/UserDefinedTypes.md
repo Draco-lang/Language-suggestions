@@ -132,6 +132,17 @@ implement IAnimal for Dog {
 
 > Note, that `this` does not need a `var` or `val` modifier. Just like any other parameter, it's implicitly a `val`.
 
+### Trait inheritance
+
+Traits can declare that the implementing type must also implement certain other traits:
+
+```rs
+trait IAnimal {}
+
+// If a type implements IDog, they must also implement IAnimal
+trait IDog : IAnimal {}
+```
+
 ### Implicit vs explicit implementations, defaulting
 
 C# allows for implementing methods of a trait implicitly or exmplicitly. Furthermore, default members are implemented explicitly, making them painful to utilize well. Note that there is a reason C# does this, to avoid the diamond-inheritance problem:

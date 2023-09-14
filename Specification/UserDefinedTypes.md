@@ -460,12 +460,9 @@ Data type modifiers:
  * `abstract` class modifier
  * `readonly` struct modifier
  * `ref` struct modifier
- * implicit interface implementation
- * explicit interface implementation
 
 Members:
  * indexers
- * arithmetic/comparison operators
  * implicit conversion
  * explicit conversion
 

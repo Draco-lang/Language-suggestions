@@ -459,13 +459,46 @@ implement IAdditionOperators<Vector2, Vector2> for Vector2 {
 }
 ```
 
+### Indexers
+
+Indexers are a little special in a way, they are modeled as parameterized properties in the .NET world. In itself that would not be a problem, interfaces/traits can declare properties. The problematic part here is twofold:
+ * Indexers can be arbitrarily parameterized, needing lots of trait declarations
+ * Indexers have the same flexibility of accessors, meaning they can be get-only, set-only, get-set, hzave different visibilities, ...
+
+Because of that, I propose that indexers should stay regular properties. Since our property syntax already looks like functions, we can easily add parameters. For indexers especially, we could reserve a special name, like `index`. Example:
+
+```swift
+class My2DArray {
+    field val underlying: Array<Array<int32>>;
+}
+
+implement My2DArray {
+    // Ctor
+    public func new(w: int32, h: int32): This {
+        val outer = Array(h);
+        for (i in Range(0, w)) outer[i] = Array(w);
+        return This {
+            underlying = outer;
+        };
+    }
+
+    // Indexer
+    public prop index(this, x: int32, y: int32) {
+        get = this.underlying[y, x];
+        set {
+            this.underlying[y, x] = value;
+        }
+    }
+}
+```
+
+### What to do with `mod` and `rem`
+
+TODO
+
 ## Not yet considered
 
-A section to list what this proposal hasn't considered yet (copied from the section listing the C# elements).
-
-Data types:
- * `record class` declarations
- * `record struct` declarations
+A section to list what this proposal hasn't considered yet (partially copied from the section listing the C# elements).
 
 Data type modifiers:
  * `abstract` class modifier
@@ -473,17 +506,17 @@ Data type modifiers:
  * `ref` struct modifier
 
 Members:
- * indexers
  * implicit conversion
  * explicit conversion
 
 Member modifiers:
- * `required` property modifier
  * `abstract` property/method modifier
  * `abstract override` property/method modifier
  * `virtual` property/method modifier
  * `override` property/method modifier
  * covariant return type for methods/properties
+ * property accessor visibility rules
+ * initializer-style constructor visibility
 
 ## Elaborate examples
 

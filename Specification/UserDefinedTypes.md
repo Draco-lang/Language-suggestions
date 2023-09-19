@@ -222,7 +222,25 @@ value class Color {
 // }
 ```
 
-TODO: Tuple-like classes
+### Tuple-classes
+
+From `record` types in C#, it is obvious that a more lightweight datatype is needed for cases, where all of the state is public, and a constructor would be automatically provided to initialize this state. While the C# `record` is a little more opinionated in terms of design (as it includes a `ToString` and equality implementation by default), this basic concept would be worthy enough to add sugar to classes to make POCOs easier to declare. The rest of the `record` features could be achieved through decorators, which are planned as a more generic solution to implement boilerplate code.
+
+Example:
+
+```swift
+class Color(val R: int32, val G: int32, val B: int32);
+
+func main() {
+    // Construction is a public method
+    val c = Color(1, 2, 3);
+
+    // State is public
+    WriteLine("\{c.R}, \{c.G}, \{c.B}");
+}
+```
+
+The `value` and `open` modifiers ase also valid for this construct.
 
 ### Inheritance
 

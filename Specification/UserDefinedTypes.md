@@ -240,7 +240,7 @@ func main() {
 }
 ```
 
-The `value` and `open` modifiers ase also valid for this construct.
+The `value` and `open` modifiers ase also valid for this construct. The `Color` constructor in this case is always public.
 
 ### Inheritance
 
@@ -278,7 +278,7 @@ val f = Foo {
 };
 ```
 
-TODO: Visibility of this kind of construction?
+The visibility of this constructor/initializer is always private, meaning that factory methods should be exposed for constructing the type from the outside world.
 
 ### Calling base constructors
 
@@ -443,6 +443,25 @@ prop Foo(): int32 { get; set; }
 prop Bar(this): int32 { get; }
 ```
 
+### Visibility
+
+The visibility of properties is a bit more complicated topic, because sometimes the accessors need to have different visibilities declared. C# solves this by allowing to declare a visibility for the properties, and then _restrict_ the individual accessors.
+
+For the sake of simplicity - and to avoid introducing an explicit `private` visibility modifier when the rest of the design is built around implicit private, I'd like to propose the following:
+ * When a visibility is specified for a property, all accessors inherit it
+ * When no visibility is specified for the property itself, the individual accessors can declare their own visibilities
+
+While the latter would be enough to cover all cases, having properties with the same visibility for all its accessors is common enough to justify the shortcut. Specifying visibility for both the property and the accessors is illegal.
+
+Some examples:
+ * `val X: int32;`: private get, no set
+ * `var X: int32;`: private get, private set
+ * `public var X: int32;`: public get, public set
+ * `prop X(this): int32 { get = ...; set = ...; }`: private get, private set
+ * `public prop X(this): int32 { get = ...; set = ...; }`: public get, public set
+ * `prop X(this): int32 { public get = ...; set = ...; }`: public get, private set
+ * `public prop X(this): int32 { public get = ...; set = ...; }`: illegal
+
 ## Static state
 
 Non-member, static data can be associated to types in the `implement` blocks. For example, adding a static instance counter field to the type `Foo`:
@@ -533,8 +552,6 @@ Member modifiers:
  * `virtual` property/method modifier
  * `override` property/method modifier
  * covariant return type for methods/properties
- * property accessor visibility rules
- * initializer-style constructor visibility
 
 ## Elaborate examples
 

@@ -572,9 +572,50 @@ implement My2DArray {
 
 TODO
 
-## Abstract and virtual member modifiers
+## Abstract, virtual, override member modifiers
 
 ### Abstract member modifier
+
+TODO
+
+### Virtual member modifier
+
+Virtual members can use the `open` modifier. Similarly, how `open` opens up a type for extension, it also does the same for the marked members (properties and functions). The modifier is only valid on instance (nonstatic) members.
+
+Examples:
+
+```swift
+open class Person {
+    field name: string;
+}
+
+implement Person {
+    public open prop Name(this): string = this.name;
+    public open func greet(this): string = "Hi, \{this.Name}";
+}
+```
+
+### Override member modifier
+
+For virtual and abstract members `override` becomes a valid modifier for prividing an overriding implementation in derived types. Example:
+
+```swift
+class RudePerson : Person {}
+
+implement RudePerson {
+    public override prop Name(this): string = base.Name.ToLower();
+    public override func greet(this): string = "";
+}
+```
+
+Note, that `overriding` members are `sealed` by default, unless they are explicitly kept `open`:
+
+```swift
+implement RudePerson {
+    public open override prop Name(this): string = base.Name.ToLower();
+    public open override func greet(this): string = "";
+}
+```
 
 ## Not yet considered
 

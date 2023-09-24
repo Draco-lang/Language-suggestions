@@ -572,6 +572,10 @@ implement My2DArray {
 
 TODO
 
+## Abstract and virtual member modifiers
+
+### Abstract member modifier
+
 ## Not yet considered
 
 A section to list what this proposal hasn't considered yet (partially copied from the section listing the C# elements).
@@ -586,8 +590,6 @@ Members:
  * `mod` and `rem` operators
 
 Member modifiers:
- * `abstract` property/method modifier
- * `abstract override` property/method modifier
  * `virtual` property/method modifier
  * `override` property/method modifier
  * covariant return type for methods/properties

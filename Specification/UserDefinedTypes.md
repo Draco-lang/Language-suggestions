@@ -631,8 +631,6 @@ Members:
  * `mod` and `rem` operators
 
 Member modifiers:
- * `virtual` property/method modifier
- * `override` property/method modifier
  * covariant return type for methods/properties
 
 ## Elaborate examples

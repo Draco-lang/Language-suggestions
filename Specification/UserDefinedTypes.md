@@ -302,6 +302,45 @@ val d = Derived {
 
 Which might be something we don't want to, or simply can't support.
 
+### Abstract classes
+
+Abstract classes are not central to Draco (because of the flexibility of traits), so their design solely serves interop with C#. An abstract class can be generated from a trait using an attribute:
+
+```swift
+@abstractClass("Person")
+trait IPerson {
+    // TODO: What to do with static abstract members?
+    // AFAIK they can not be parts of abstract classes?
+    func create(name: string): IPerson;
+
+    prop Name(this): string { get; }
+
+    func greet(this);
+
+    func sayGoodbye(this) {
+        Console.WriteLine("Bye \{this.Name}");
+    }
+}
+```
+
+Which generates the following class in metadata:
+
+```cs
+abstract class Person : IPerson
+{
+    // TODO: See above
+    // static IPerson create(string name)
+
+    abstract string Name { get; }
+
+    abstract void greet();
+
+    virtual void sayGoodbye() {
+        (this as IPerson).sayGoodbye();
+    }
+}
+```
+
 ## Sum types (DUs, enums)
 
 Discriminated unions take heavy inspiration from Rust enums. In general, they take the following shape:
@@ -538,13 +577,13 @@ TODO
 A section to list what this proposal hasn't considered yet (partially copied from the section listing the C# elements).
 
 Data type modifiers:
- * `abstract` class modifier
  * `readonly` struct modifier
  * `ref` struct modifier
 
 Members:
  * implicit conversion
  * explicit conversion
+ * `mod` and `rem` operators
 
 Member modifiers:
  * `abstract` property/method modifier

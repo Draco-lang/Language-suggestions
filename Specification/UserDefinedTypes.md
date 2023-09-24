@@ -626,6 +626,7 @@ Data type modifiers:
  * `ref` struct modifier
 
 Members:
+ * `abstract` property/method modifier
  * implicit conversion
  * explicit conversion
  * `mod` and `rem` operators
